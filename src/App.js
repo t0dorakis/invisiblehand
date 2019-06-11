@@ -1,12 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Store } from './Store';
 import './App.css';
+import BabylonScene from './Components/BabylonScene'
 
 function App() {
-  return (
+    const store = React.useContext(Store);
+    return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+          {console.log(store)}
+
+        <BabylonScene/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
