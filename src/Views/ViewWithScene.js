@@ -1,35 +1,42 @@
-import * as React from "react";
+import React, { useContext, useEffect } from "react";
 import * as BABYLON from "babylonjs";
 import * as HAMMER from 'hammerjs';
 import PropTypes from 'prop-types';
+import { Store } from './../Store';
 
 import BabylonScene, { SceneEventArgs } from "../Components/BabylonScene"; // import the component above linking to file we just created.
 
 
 const PageWithScene = () => {
+    const { state } = useContext(Store);
+    let fingerPosition = {x:0, y:0};
+    let fingerIsTouching;
 
-    const onSceneMount = (e) => {
-
-        const { canvas, scene, engine } = e;
+    const initialSetup = (scene, canvas) => {
 
         let hand = new BABYLON.Mesh();
         let assetsLoaded = false
-        scene.clearColor = new BABYLON.Color3(0.7, 0.7, 0.7);
-        var camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI/2, Math.PI / 3, 25, BABYLON.Vector3.Zero(), scene);
-        camera.attachControl(canvas, true);
-        var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+        scene.clearColor = new BABYLON.Color4(1,0,0,0);
+
+        const camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
+        // camera.attachControl(canvas, true);
+        const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
         light.intensity = 0.7;
-        const sphere = BABYLON.Mesh.CreateSphere("sphrere", 1, 1, scene);
 
 
         const planeCanvas = BABYLON.MeshBuilder.CreatePlane("planeCanvas",{width: 5, height:8}, scene);
 
         //Create dynamic texture
-        var textureResolution = 512;
-        var textureGround = new BABYLON.DynamicTexture("dynamic texture", textureResolution, scene);
-        var textureContext = textureGround.getContext();
+        const textureResolution = {width: window.innerWidth, height: window.innerHeight};
+        const textureGround = new BABYLON.DynamicTexture("dynamic texture", textureResolution, scene);
+        const textureContext = textureGround.getContext();
 
-        var materialGround = new BABYLON.StandardMaterial("Mat", scene);
+        const materialGround = new BABYLON.StandardMaterial("Mat", scene);
+        materialGround.alpha = 0.2;
+        materialGround.opacityFresnelParameters = new BABYLON.FresnelParameters();
+        materialGround.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
+        materialGround.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+
         materialGround.diffuseTexture = textureGround;
         planeCanvas.material = materialGround;
 
@@ -38,10 +45,39 @@ const PageWithScene = () => {
         textureGround.update();
 
         textureContext.beginPath();
-        textureContext.arc(100, 75, 50, 0, 2 * Math.PI);
+        textureContext.arc(200, 75, 50, 0, 2 * Math.PI);
         textureContext.fillStyle = "white";
         textureContext.fill();
         textureGround.update();
+
+        return {textureGround, textureContext }
+    }
+
+    const paint = (textureContext, textureGround, fingerPosition, fingerIsTouching) => {
+        textureContext.beginPath();
+        textureContext.arc(fingerPosition.x, fingerPosition.y, 50, 0, 2 * Math.PI);
+        textureContext.fillStyle = "white";
+        textureContext.fill();
+        textureGround.update();
+    }
+
+    const onSceneMount = (e) => {
+        const { canvas, scene, engine } = e;
+
+        const {textureContext, textureGround} = initialSetup(scene, canvas)
+        // hammerjs listens to mouse move
+        // Create an instance of Hammer with the reference.
+        const hammer = new HAMMER(canvas);
+        hammer.on("panleft panright tap press", (ev)=> {
+            fingerPosition = ev.center;
+            fingerIsTouching = ev.isFirst;
+            paint(textureContext, textureGround, fingerPosition, fingerIsTouching);
+
+            if (ev.isFinal){
+                fingerIsTouching = ev.isFinal
+            }
+        });
+
 
 
         // //Draw on canvas
@@ -58,29 +94,29 @@ const PageWithScene = () => {
         // textureGround.update();
 
 
-        BABYLON.SceneLoader.Append(
-            './assets/',
-            'hand.gltf',
-            scene,
-            (scene) => {
-                // planeCanvas.material = myMaterial
-                console.log('SUCCESS')
-                // scene.meshes[1].name = 'hand'
-                hand = scene.meshes[scene.meshes.length -1]
-                assetsLoaded = true
-                scene.addMesh(planeCanvas)
-
-            },
-            (progress) => {
-                console.log('Pogress',progress)
-            },
-            (error) => {
-                console.log('Error')
-            },
-        );
+        // BABYLON.SceneLoader.Append(
+        //     './assets/',
+        //     'hand.gltf',
+        //     scene,
+        //     (scene) => {
+        //         // planeCanvas.material = myMaterial
+        //         console.log('SUCCESS')
+        //         // scene.meshes[1].name = 'hand'
+        //         hand = scene.meshes[scene.meshes.length -1]
+        //         assetsLoaded = true
+        //         scene.addMesh(planeCanvas)
+        //
+        //     },
+        //     (progress) => {
+        //         console.log('Pogress',progress)
+        //     },
+        //     (error) => {
+        //         console.log('Error')
+        //     },
+        // );
 
         engine.runRenderLoop(() => {
-            if (scene && assetsLoaded) {
+            if (scene) {
                 scene.render();
             }
         });

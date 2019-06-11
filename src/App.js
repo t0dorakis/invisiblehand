@@ -1,6 +1,6 @@
 import React from 'react';
 import { Store } from './Store';
-import './App.css';
+import './App.scss';
 import BabylonScene from './Components/BabylonScene'
 
 function App() {
