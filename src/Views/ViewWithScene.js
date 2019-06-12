@@ -16,7 +16,62 @@ const PageWithScene = () => {
 
     let assetsLoaded = false;
     let hand;
+    let camera;
+    let handTouchAnimation;
+    let cameraAnimation;
 
+    const handStartingPosition = {x: 0, y: -14, z: -10}
+
+    var keys = [];
+
+//At the animation key 0, the value of scaling is "1"
+    keys.push({
+        frame: 0,
+        value: -10
+    });
+
+    //At the animation key 20, the value of scaling is "0.2"
+    keys.push({
+        frame: 25,
+        value: -5
+    });
+
+    //At the animation key 100, the value of scaling is "1"
+    keys.push({
+        frame: 50,
+        value: -2.2
+    });
+
+    const cameraAnimationKeys = [
+        {
+            frame:0,
+            value: new BABYLON.Vector3(10,-15,-25)
+        },
+        {
+            frame:100,
+            value: new BABYLON.Vector3(5,-3,-25)
+        },
+        {
+            frame:200,
+            value: new BABYLON.Vector3(-2,5,-25)
+        },
+        {
+            frame:300,
+            value: new BABYLON.Vector3(-7,4,-25)
+        },
+        {
+            frame:400,
+            value: new BABYLON.Vector3(-1,-3,-25)
+        },
+        {
+            frame:500,
+            value: new BABYLON.Vector3(3,-9,-25)
+        },
+        {
+            frame:600,
+            value: new BABYLON.Vector3(10,-15,-25)
+        }
+    ]
 
     const initialSetup = (scene, canvas) => {
 
@@ -29,15 +84,33 @@ const PageWithScene = () => {
         // var envTexture =‚ new BABYLON.CubeTexture("./assets/skybox.dds", scene);
         // scene.createDefaultSkybox(envTexture, true, 1000);
 
+
+        handTouchAnimation = new BABYLON.Animation("handTouchAnimation", "position.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        handTouchAnimation.setKeys(keys);
+
+
+        cameraAnimation = new BABYLON.Animation("cameraAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+        cameraAnimation.setKeys(cameraAnimationKeys);
+
+
+
         BABYLON.SceneLoader.ImportMesh("", "./assets/", "scene.babylon", scene, (newMeshes) => {
             assetsLoaded = true
             hand = newMeshes[0]
             const handMaterial = new BABYLON.StandardMaterial("handMat", scene);
             handMaterial.pointsCloud = true;
-            handMaterial.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+            handMaterial.diffuseColor = new BABYLON.Color3(0, 0, .5);
+            handMaterial.emissiveColor = new BABYLON.Color3(0.02, 0.01, 0.01);
+
 
             hand.material = handMaterial
             hand.scaling = new BABYLON.Vector3(3, 3, 3);
+            hand.position.z = -10
+            hand.position.y = -15
+
+            hand.animations = [];
+            hand.animations.push(handTouchAnimation);
+
         })
 
 
@@ -62,13 +135,16 @@ const PageWithScene = () => {
         light.groundColor = new BABYLON.Color3(1, 1, 1);
 
         // CAMERA
-        const camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
-        camera.attachControl(canvas, true);
+        camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
+        // camera.attachControl(canvas, true);
         // const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
         // light.intensity = 0.7;
 
         // FRONT PLANE
         const planeCanvas = BABYLON.MeshBuilder.CreatePlane("planeCanvas",{width: (22 / (window.innerHeight / window.innerWidth)), height:22}, scene);
+        camera.focusOn([planeCanvas])
+        camera.position = new BABYLON.Vector3(20,5,-30)
+        camera.animations = [cameraAnimation]
         const { frontMaterial, texture: frontTexture, frontTextureContext }  = getGroundMaterial(scene)
         planeCanvas.material = frontMaterial;
 
@@ -184,17 +260,42 @@ const PageWithScene = () => {
         textureGround.update();
     }
 
+    var getGroundPosition = function (scene) {
+        // Use a predicate to get position on the ground
+        var pickinfo = scene.pick(scene.pointerX, scene.pointerY);
+        return pickinfo.pickedPoint;
+    }
+
     const onSceneMount = (e) => {
         const { canvas, scene, engine } = e;
 
         const { frontTexture, frontTextureContext, camera  } = initialSetup(scene, canvas)
+        scene.beginAnimation(camera, 0, 600, true);
         // hammerjs listens to mouse move
         // Create an instance of Hammer with the reference.
         const hammer = new HAMMER(canvas);
+
+        let firstTouch = true;
+        let lastHandPosition = handStartingPosition;
         hammer.on("panleft panright tap press", (ev)=> {
-            console.log(ev)
-            if (assetsLoaded && !ev.isFirst) {
-                hand.translate(new BABYLON.Vector3(1, 0, 0), 3, BABYLON.Space.LOCAL);
+            const current = getGroundPosition(scene);
+            console.log(current);
+            if (current !== null) {
+                const aimedHandPosition = { x: current.x, y: current.y -15, z: -2.2}
+                // hand.position = aimedHandPosition
+                const tempKeys = [{frame: 0, value: lastHandPosition},{frame: 5, value:aimedHandPosition}]
+                const tempAnimation = new BABYLON.Animation("handTouchAnimation", "position", 5, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+                tempAnimation.setKeys(tempKeys)
+                scene.beginDirectAnimation(hand, [tempAnimation], 0, 10, false, 5, (callback) => {
+                    lastHandPosition = aimedHandPosition
+                });
+
+            }
+            // console.log(ev)
+            if (assetsLoaded && firstTouch) {
+                firstTouch = !firstTouch
+                scene.beginAnimation(hand, 0, 50, true);
+                // hand.translate(new BABYLON.Vector3(1, 0, 0), 3);
             }
             // camera.target = new BABYLON.Vector3(BABYLON.Tools.ToRadians(-90 + ( ev.center.x / 5)), BABYLON.Tools.ToRadians(90 - ( ev.center.y / 5)), 25, BABYLON.Vector3.Zero())
             fingerPosition = ev.center;
