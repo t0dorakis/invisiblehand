@@ -1,7 +1,8 @@
 import React from 'react';
 import { Store } from './Store';
 import './App.scss';
-import BabylonScene from './Components/BabylonScene'
+import PageWithScene from "./Views/ViewWithScene";
+
 
 function App() {
     const store = React.useContext(Store);
@@ -10,7 +11,7 @@ function App() {
       <header className="App-header">
           {console.log(store)}
 
-        <BabylonScene/>
+        <PageWithScene/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
