@@ -1,0 +1,12 @@
+@import url("https://use.typekit.net/orl5sme.css");
+
+@mixin normal-font {
+  font-family: aktiv-grotesk, sans-serif;
+  letter-spacing: 0.3pt;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 155%;
+}
+
+$action-bar-height: 60px;
+$black: #030308;

@@ -1,0 +1,17 @@
+@import '../variables';
+
+.single-page {
+  @include normal-font;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-height: calc(100vh - #{$action-bar-height});
+  overflow-x: auto;
+  h5 {
+    margin-block-end: 0px;
+  }
+  article {
+    margin: 30px;
+    max-width: 500px;
+  }
+}

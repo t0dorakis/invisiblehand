@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from "react";
 import * as BABYLON from "babylonjs";
 import * as HAMMER from 'hammerjs';
 import PropTypes from 'prop-types';
-import { Store } from './../Store';
-import './ViewWithScene.scss';
+import { Store } from '../../Store';
+import './Home.scss';
 
 
-import BabylonScene, { SceneEventArgs } from "../Components/BabylonScene"; // import the component above linking to file we just created.
+import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; // import the component above linking to file we just created.
 
 
 const PageWithScene = () => {
@@ -156,7 +156,8 @@ const PageWithScene = () => {
         materialText.ambientColor = new BABYLON.Color3(1, 1, 1);
         materialText.diffuseColor = new BABYLON.Color3(1, 1, 1);
 
-
+        // Plane behind everything (needed for skybox effect)
+        const worldPlane = BABYLON.MeshBuilder.CreatePlane("worldCanvas",{width: (22 / (window.innerHeight / window.innerWidth)), height:22}, scene);
 
         const gl = new BABYLON.GlowLayer("planeCanvas", scene);
 
@@ -246,16 +247,24 @@ const PageWithScene = () => {
     }
 
     const paint = (textureContext, textureGround, fingerPosition, fingerIsTouching) => {
-        const radius = 50
+        const radius = 50;
+        const x = fingerPosition.x;
+        const y = fingerPosition.y;
+
+        const gradient = textureContext.createRadialGradient(x, y, (radius - 10), x, y, (radius + 10));
+        gradient.addColorStop(0, 'rgba(0,0,0,1)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
         console.log(textureGround)
         textureContext.beginPath();
+        textureContext.beginPath();
         textureContext
-            .arc(fingerPosition.x, fingerPosition.y, radius, 0, 2 * Math.PI)
+            .arc(x, y, radius, 0, 2 * Math.PI)
         textureContext.globalCompositeOperation = "destination-out";
-        textureContext.strokeStyle = "rgba(0,0,0,1)";
-        // textureContext.fillStyle = "transparent";
+        textureContext.strokeStyle = gradient;
+        textureContext.fillStyle = gradient;
         textureContext.fill();
         textureContext.closePath();
+
 
         textureGround.update();
     }
@@ -357,18 +366,12 @@ const PageWithScene = () => {
         return (
             <div>
                 <div className="scene-wrapper">
-                    <div className="text-under-scene-wrapper">
-                    </div>
                     <BabylonScene
                         width={window.innerWidth}
                         height={window.innerHeight}
                         onSceneMount={onSceneMount}
                         className="babylon-scene"
                     />
-                    <div className="call-to-action">
-                        <span> Scratch Off</span>
-                        {/*<a href="#">Datasecurity & Terms</a>*/}
-                    </div>
                 </div>
             </div>
         );

@@ -1,0 +1,100 @@
+@import '../../variables';
+* {
+  @include normal-font
+}
+a {
+  text-decoration: none;
+  color: #444;
+}
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: $action-bar-height;
+  width: 100%;
+
+  &--menu-list {
+    margin: 0;
+    padding-inline-start: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    &--item {
+      padding-left: 20px;
+      padding-bottom: 20px;
+      a {
+        color: #444;
+      }
+    }
+  }
+  .hand-shake {
+    width: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    .logo {
+      transition: all 0.1s ease;
+    }
+
+    .vertical-text {
+      position: relative;
+      text-transform: uppercase;
+      top: -60px;
+      font-size: 10pt;
+      right: 4%;
+      color: #444;
+      transform: rotate(90deg);
+      transition: all 0.1s ease;
+      letter-spacing: 0.9pt;
+    }
+    &:hover {
+      .logo {
+        transform: scale(1.1);
+      }
+      .vertical-text {
+        top: -53px;
+      }
+    }
+    .logo {
+      width: 50px;
+      height: 50px;
+      background: url(../../assets/icons/handshake.svg) no-repeat center;
+    }
+  }
+}
+
+.mobile-menu {
+  display: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.back-button {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: $black;
+  }
+}
+@media screen and (max-width: 600px) {
+  .action-bar--menu-list {
+    display: none;
+  }
+  .mobile-menu {
+    display: flex;
+  }
+}

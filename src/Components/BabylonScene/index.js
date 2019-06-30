@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as BABYLON from "babylonjs";
 import * as HAMMER from 'hammerjs';
-import { Store } from './../Store';
+import { Store } from '../../Store';
 
 
 const BabylonScene = ({scene, engine, engineOptions ,adaptToDeviceRatio, width, height, onSceneMount}) => {

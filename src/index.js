@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { StoreProvider } from './Store';
+import { BrowserRouter } from "react-router-dom";
 
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import PageWithScene from "./Views/ViewWithScene";
+import AppRouter from "./AppRouter";
 
 
 ReactDOM.render(
-    <StoreProvider>
-        <div className="App">
-            <PageWithScene />
-        </div>
-    </StoreProvider>
+        <StoreProvider>
+            <AppRouter/>
+            {/*<div className="App">*/}
+                {/*<PageWithScene />*/}
+            {/*</div>*/}
+        </StoreProvider>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
