@@ -225,11 +225,17 @@ const PageWithScene = () => {
         frontMaterial.specularColor = new BABYLON.Color3(1, 0.6, 1);
         // frontMaterial.emissiveColor = new BABYLON.Color3(0.1, 0.1, 0.1);
         frontMaterial.ambientColor = new BABYLON.Color3(0.5, 0.5, 0.5);
-        frontMaterial.reflectionTexture = new BABYLON.MirrorTexture("mirror", {ratio: 0.5}, scene, true);
-        frontMaterial.reflectionTexture.mirrorPlane = new BABYLON.Plane(0, -1.0, 0, -2.0);
-        frontMaterial.reflectionTexture.renderList = [reflectionMesh];
-        frontMaterial.reflectionTexture.level = 5;
-        frontMaterial.reflectionTexture.adaptiveBlurKernel = 32;
+        // frontMaterial.reflectionTexture = new BABYLON.MirrorTexture("mirror", {ratio: 0.5}, scene, true);
+        // frontMaterial.reflectionTexture.mirrorPlane = new BABYLON.Plane(0, -1.0, 0, -2.0);
+        // frontMaterial.reflectionTexture.renderList = [reflectionMesh];
+        // frontMaterial.reflectionTexture.level = 5;
+        // frontMaterial.reflectionTexture.adaptiveBlurKernel = 32;
+
+        frontMaterial.specularTexture = new BABYLON.Texture("assets/FingerPrints004.jpg", scene);
+        frontMaterial.specularPower = 64;
+        frontMaterial.useGlossinessFromSpecularMapAlpha = true;
+        // frontMaterial.diffuseColor = BABYLON.Color3.Black();
+        frontMaterial.roughness = 3;
 
         const frontTextureContext = texture.getContext();
 
