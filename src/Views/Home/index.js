@@ -48,42 +48,47 @@ const PageWithScene = () => {
             value: new BABYLON.Vector3(10,-15,-25)
         },
         {
-            frame:100,
-            value: new BABYLON.Vector3(5,-3,-25)
-        },
-        {
             frame:200,
-            value: new BABYLON.Vector3(-2,5,-25)
-        },
-        {
-            frame:300,
-            value: new BABYLON.Vector3(-7,4,-25)
+            value: new BABYLON.Vector3(9,-12,-25)
         },
         {
             frame:400,
-            value: new BABYLON.Vector3(-1,-3,-25)
-        },
-        {
-            frame:500,
-            value: new BABYLON.Vector3(3,-9,-25)
+            value: new BABYLON.Vector3(8,-9,-25)
         },
         {
             frame:600,
+            value: new BABYLON.Vector3(6,-11,-25)
+        },
+        {
+            frame:800,
+            value: new BABYLON.Vector3(8,-12,-25)
+        },
+        {
+            frame:1000,
+            value: new BABYLON.Vector3(10,-13,-25)
+        },
+        {
+            frame:1200,
             value: new BABYLON.Vector3(10,-15,-25)
         }
     ]
 
     const initialSetup = (scene, canvas) => {
-
-
-
-        // SKY
+        // // SKY
         scene.ambientColor = new BABYLON.Color3(1, 1, 1);
-
         scene.clearColor = new BABYLON.Color4(0,0,0,0)
         // var envTexture =‚ new BABYLON.CubeTexture("./assets/skybox.dds", scene);
         // scene.createDefaultSkybox(envTexture, true, 1000);
-
+        // Skybox
+        // const skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {size:90.0}, scene);
+        // // skybox.rotation.y = BABYLON.Tools.ToRadians(90);
+        // const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+        // skyboxMaterial.backFaceCulling = false;
+        // skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("./assets/skybox", scene);
+        // skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+        // skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        // skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+        // skybox.material = skyboxMaterial;
 
         handTouchAnimation = new BABYLON.Animation("handTouchAnimation", "position.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         handTouchAnimation.setKeys(keys);
@@ -99,8 +104,8 @@ const PageWithScene = () => {
             hand = newMeshes[0]
             const handMaterial = new BABYLON.StandardMaterial("handMat", scene);
             handMaterial.pointsCloud = true;
-            handMaterial.diffuseColor = new BABYLON.Color3(0, 0, .5);
-            handMaterial.emissiveColor = new BABYLON.Color3(0.02, 0.01, 0.01);
+            handMaterial.diffuseColor = new BABYLON.Color3(0.1, 0.1, 0.1);
+            // handMaterial.emissiveColor = new BABYLON.Color3(0.02, 0.01, 0.01);
 
 
             hand.material = handMaterial
@@ -125,14 +130,15 @@ const PageWithScene = () => {
         const pointLight2 = new BABYLON.PointLight("light", new BABYLON.Vector3(60, 60, -500), scene);
         // pointLight.direction = new BABYLON.Vector3(10,10,999);
         pointLight2.intensity = 2
-        pointLight2.diffuse = new BABYLON.Color3(0, 0, 0.1);
-        pointLight2.specular = new BABYLON.Color3(0, 0, 0.2);
+        pointLight2.diffuse = new BABYLON.Color3(0.7, 0.5, 0.2);
+        pointLight2.specular = new BABYLON.Color3(0.9, 0.5, 0.2);
 
         //Light direction is up and left
         const light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 5, -8), scene);
         light.diffuse = new BABYLON.Color3(1, 1, 1);
         light.specular = new BABYLON.Color3(1, 1, 1);
         light.groundColor = new BABYLON.Color3(1, 1, 1);
+        light.intensity = 1
 
         // CAMERA
         camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
@@ -145,8 +151,9 @@ const PageWithScene = () => {
         camera.focusOn([planeCanvas])
         camera.position = new BABYLON.Vector3(20,5,-30)
         camera.animations = [cameraAnimation]
-        const { frontMaterial, texture: frontTexture, frontTextureContext }  = getGroundMaterial(scene)
+        const { frontMaterial, texture: frontTexture, frontTextureContext }  = getGroundMaterial(scene, hand)
         planeCanvas.material = frontMaterial;
+
 
 
         // BACK PLANE with TEXT
@@ -156,10 +163,14 @@ const PageWithScene = () => {
         materialText.ambientColor = new BABYLON.Color3(1, 1, 1);
         materialText.diffuseColor = new BABYLON.Color3(1, 1, 1);
 
-        // Plane behind everything (needed for skybox effect)
-        const worldPlane = BABYLON.MeshBuilder.CreatePlane("worldCanvas",{width: (22 / (window.innerHeight / window.innerWidth)), height:22}, scene);
-
         const gl = new BABYLON.GlowLayer("planeCanvas", scene);
+
+        // Plane behind everything (needed for skybox effect)
+        const worldPlane = BABYLON.MeshBuilder.CreatePlane("worldCanvas",{width: (50 / (window.innerHeight / window.innerWidth)), height:50}, scene);
+        worldPlane.position.z = 4 // move behind front
+
+        pointLight2.excludedMeshes.push(worldPlane);
+        light.excludedMeshes.push(planeCanvas);
 
         textCanvas.material = materialText;
         const textureResolution = {width: window.innerWidth, height: window.innerHeight};
@@ -169,7 +180,7 @@ const PageWithScene = () => {
         ctx.fillStyle = "rgba(255, 255, 255, 1)";
         ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
         ctx.fillStyle = "black";
-        ctx.font = '50px Helvetica';
+        ctx.font = '50px aktiv-grotesk';
         const txt = 'Invisible Hand is an: \nArtist Consultancy\nSuperstar Recruitment';
         const x = 50;
         const y = 300;
@@ -177,33 +188,12 @@ const PageWithScene = () => {
         const lines = txt.split('\n');
         for (var i = 0; i<lines.length; i++)
             ctx.fillText(lines[i], x, y + (i*lineheight) );
-        // ctx.beginPath();
-        // ctx.moveTo(75*2, 25*2);
-        // ctx.quadraticCurveTo(25*2, 25*2, 25*2, 62.5*2);
-        // ctx.quadraticCurveTo(25*2, 100*2, 50*2, 100*2);
-        // ctx.quadraticCurveTo(50*2, 120*2, 30*2, 125*2);
-        // ctx.fillStyle = "black";
-        // ctx.quadraticCurveTo(60*2, 120*2, 65*2, 100*2);
-        // ctx.quadraticCurveTo(125*2, 100*2, 125*2, 62.5*2);
-        // ctx.quadraticCurveTo(125*2, 25*2, 75*2, 25*2);
-        // ctx.fill();
         dynamicTextTexture.update();
-        // dynamicTextTexture.drawText('HALLO HALLO HALLO', 0, 0, "bold 44px monospace", 'green', 'white');
-        // const textTextureContext = textureText.getContext();
-        // textTextureContext.font = "10px Arial";
-        // textTextureContext.fillText("Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World", 0, 50);
-        // textureText.update()
-
-
-
-        // materialGround.diffuseTexture = textureGround;
-
-
 
         return { frontMaterial, frontTexture, frontTextureContext,camera }
     }
 
-    const getGroundMaterial = (scene) => {
+    const getGroundMaterial = (scene, reflectionMesh) => {
         //Create dynamic texture
         const textureResolution = {width: window.innerWidth, height: window.innerHeight};
         const texture = new BABYLON.DynamicTexture("dynamic texture", textureResolution, scene);
@@ -229,10 +219,15 @@ const PageWithScene = () => {
         frontMaterial.refractionFresnelParameters.leftColor = BABYLON.Color3.Black();
         frontMaterial.refractionFresnelParameters.rightColor = BABYLON.Color3.White();
 
-        frontMaterial.diffuseColor = new BABYLON.Color3(0.2, 0.2, 0.2);
+        frontMaterial.diffuseColor = new BABYLON.Color3(0.05, 0.05, 0.05);
         frontMaterial.specularColor = new BABYLON.Color3(1, 0.6, 1);
         // frontMaterial.emissiveColor = new BABYLON.Color3(0.1, 0.1, 0.1);
         frontMaterial.ambientColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+        frontMaterial.reflectionTexture = new BABYLON.MirrorTexture("mirror", {ratio: 0.5}, scene, true);
+        frontMaterial.reflectionTexture.mirrorPlane = new BABYLON.Plane(0, -1.0, 0, -2.0);
+        frontMaterial.reflectionTexture.renderList = [reflectionMesh];
+        frontMaterial.reflectionTexture.level = 5;
+        frontMaterial.reflectionTexture.adaptiveBlurKernel = 32;
 
         const frontTextureContext = texture.getContext();
 
@@ -247,6 +242,22 @@ const PageWithScene = () => {
     }
 
     const paint = (textureContext, textureGround, fingerPosition, fingerIsTouching) => {
+
+        const drawCircle = (r, x, y, polar, ctx) => {
+            if (polar) {
+                let a = x;
+                let d = y;
+                x = Math.cos(a) * d;
+                y = Math.sin(a) * d;
+            }
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.strokeStyle = gradient;
+            ctx.fill();
+            ctx.closePath()
+        }
+
         const radius = 50;
         const x = fingerPosition.x;
         const y = fingerPosition.y;
@@ -255,6 +266,20 @@ const PageWithScene = () => {
         gradient.addColorStop(0, 'rgba(0,0,0,1)');
         gradient.addColorStop(1, 'rgba(0,0,0,0)');
         console.log(textureGround)
+
+        const maxDist=8;
+        const points=new Array();
+        for (let i = 0; i < 15; i++) {
+            let d=Math.pow(Math.random(),2);
+            const a=Math.random()*Math.PI*2;
+            const r=0.1+(Math.pow(1-d,2)*4);
+            d*=maxDist;
+            points.push({
+                d:d,
+                a:a,
+                r:r
+            });
+        }
         textureContext.beginPath();
         textureContext.beginPath();
         textureContext
@@ -279,7 +304,7 @@ const PageWithScene = () => {
         const { canvas, scene, engine } = e;
 
         const { frontTexture, frontTextureContext, camera  } = initialSetup(scene, canvas)
-        scene.beginAnimation(camera, 0, 600, true);
+        scene.beginAnimation(camera, 0, 1200, true);
         // hammerjs listens to mouse move
         // Create an instance of Hammer with the reference.
         const hammer = new HAMMER(canvas);
@@ -288,7 +313,7 @@ const PageWithScene = () => {
         let lastHandPosition = handStartingPosition;
         hammer.on("panleft panright tap press", (ev)=> {
             const current = getGroundPosition(scene);
-            console.log(current);
+            // console.log(current);
             if (current !== null) {
                 const aimedHandPosition = { x: current.x, y: current.y -15, z: -2.2}
                 // hand.position = aimedHandPosition
