@@ -213,11 +213,13 @@ const PageWithScene = () => {
         frontMaterial.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
         frontMaterial.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
 
-        frontMaterial.refractionFresnelParameters = new BABYLON.FresnelParameters();
-        frontMaterial.refractionFresnelParameters.bias = 0.5;
-        frontMaterial.refractionFresnelParameters.power = 16;
-        frontMaterial.refractionFresnelParameters.leftColor = BABYLON.Color3.Black();
-        frontMaterial.refractionFresnelParameters.rightColor = BABYLON.Color3.White();
+        // refrection not working in IOS! At least it seems like.
+
+        // frontMaterial.refractionFresnelParameters = new BABYLON.FresnelParameters();
+        // frontMaterial.refractionFresnelParameters.bias = 0.5;
+        // frontMaterial.refractionFresnelParameters.power = 16;
+        // frontMaterial.refractionFresnelParameters.leftColor = BABYLON.Color3.Black();
+        // frontMaterial.refractionFresnelParameters.rightColor = BABYLON.Color3.White();
 
         frontMaterial.diffuseColor = new BABYLON.Color3(0.05, 0.05, 0.05);
         frontMaterial.specularColor = new BABYLON.Color3(1, 0.6, 1);
