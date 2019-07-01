@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { Store } from '../../Store';
 import './Home.scss';
 
+import fingerprintMap from '../../assets/maps/fingerprints.jpg';
+
 
 import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; // import the component above linking to file we just created.
 
@@ -231,7 +233,7 @@ const PageWithScene = () => {
         // frontMaterial.reflectionTexture.level = 5;
         // frontMaterial.reflectionTexture.adaptiveBlurKernel = 32;
 
-        frontMaterial.specularTexture = new BABYLON.Texture("./assets/FingerPrints004.jpg", scene);
+        frontMaterial.specularTexture = new BABYLON.Texture(fingerprintMap, scene);
         frontMaterial.specularPower = 64;
         frontMaterial.useGlossinessFromSpecularMapAlpha = true;
         // frontMaterial.diffuseColor = BABYLON.Color3.Black();
