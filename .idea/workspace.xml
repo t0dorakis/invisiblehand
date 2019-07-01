@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2953ba0-b1ba-44b2-9552-c5482525d5aa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/now.json" afterPath="$PROJECT_DIR$/now.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/Home/index.js" afterPath="$PROJECT_DIR$/src/Views/Home/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,8 +26,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/BabylonScene/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="28" />
+            <state relative-caret-position="303">
+              <caret line="82" column="11" lean-forward="false" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="11" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -54,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Views/Home/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2694">
-              <caret line="235" column="63" lean-forward="true" selection-start-line="235" selection-start-column="63" selection-end-line="235" selection-end-column="63" />
+            <state relative-caret-position="234">
+              <caret line="237" column="36" lean-forward="false" selection-start-line="237" selection-start-column="36" selection-end-line="237" selection-end-column="36" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -66,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="now.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="now.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/now.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
@@ -141,7 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dis</find>
       <find>onSceneMount</find>
       <find>const</find>
       <find>babylonCanvas</find>
@@ -155,7 +155,6 @@
       <find>opac</find>
       <find>$</find>
       <find>planeC</find>
-      <find>assets</find>
       <find>skybox</find>
       <find>getGr</find>
       <find>rotat</find>
@@ -171,6 +170,8 @@
       <find>render</find>
       <find>camera</find>
       <find>scene</find>
+      <find>a</find>
+      <find>assets</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,8 +207,8 @@
         <option value="$PROJECT_DIR$/src/AppRouter.js" />
         <option value="$PROJECT_DIR$/src/Components/ActionBar/index.js" />
         <option value="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" />
-        <option value="$PROJECT_DIR$/src/Views/Home/index.js" />
         <option value="$PROJECT_DIR$/now.json" />
+        <option value="$PROJECT_DIR$/src/Views/Home/index.js" />
       </list>
     </option>
   </component>
@@ -228,8 +229,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="22" />
-    <option name="y" value="38" />
+    <option name="x" value="94" />
+    <option name="y" value="51" />
     <option name="width" value="1395" />
     <option name="height" value="820" />
   </component>
@@ -377,7 +378,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="22" y="38" width="1395" height="820" extended-state="0" />
+    <frame x="94" y="51" width="1395" height="820" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19467062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="687" y="232" width="306" height="585" />
@@ -787,10 +788,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/now.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/BabylonScene/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="28" />
+        <state relative-caret-position="303">
+          <caret line="82" column="11" lean-forward="false" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="11" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -799,19 +808,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/Home/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2694">
-          <caret line="235" column="63" lean-forward="true" selection-start-line="235" selection-start-column="63" selection-end-line="235" selection-end-column="63" />
+        <state relative-caret-position="234">
+          <caret line="237" column="36" lean-forward="false" selection-start-line="237" selection-start-column="36" selection-end-line="237" selection-end-column="36" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/now.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

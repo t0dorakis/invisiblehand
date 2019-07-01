@@ -231,7 +231,7 @@ const PageWithScene = () => {
         // frontMaterial.reflectionTexture.level = 5;
         // frontMaterial.reflectionTexture.adaptiveBlurKernel = 32;
 
-        frontMaterial.specularTexture = new BABYLON.Texture("assets/FingerPrints004.jpg", scene);
+        frontMaterial.specularTexture = new BABYLON.Texture("./assets/FingerPrints004.jpg", scene);
         frontMaterial.specularPower = 64;
         frontMaterial.useGlossinessFromSpecularMapAlpha = true;
         // frontMaterial.diffuseColor = BABYLON.Color3.Black();
