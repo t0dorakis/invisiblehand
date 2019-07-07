@@ -10,11 +10,8 @@ export const artistsList = ['MARCEL\nDETTMANN', 'FJAAK', 'GIAN', 'I$A', 'VICTOR'
 export const textCanvasService = (texture, windowWidth, windowHeight) => {
     const ctx = texture.getContext('2d');
 
-
-    const widthParameter = windowWidth / normalWidth
-    const heightParameter = windowHeight / normalHeight
-    const fontSizeHeadline = 120 * widthParameter
-    const lineHeightHeadline = 106 * widthParameter
+    const fontSizeHeadline = 80
+    const lineHeightHeadline = 70
 
     const getInitialText = () => {
         ctx.fillStyle = "rgba(255, 255, 255, 1)";
@@ -32,16 +29,16 @@ export const textCanvasService = (texture, windowWidth, windowHeight) => {
             ctx.fillStyle = 'white';
             ctx.fillText(headline, x, y + (index*lineHeightHeadline) );
         })
-        const fontSizeSecondLine = 50 * widthParameter
-        const lineHeightsecondLine = 47 * widthParameter
+        const fontSizeSecondLine = 30
+        const lineHeightsecondLine = 27
         const secondLine = secondLineText.split('\n');
         secondLine.forEach((headline, index) => {
             ctx.font = `lighter ${fontSizeSecondLine}px aktiv-grotesk`;
             ctx.fillStyle = 'black';
-            ctx.fillText(headline, x, y * (headLines.length + 0.45) + (index*lineHeightsecondLine) );
+            ctx.fillText(headline, x, y * (headLines.length + 0.2) + (index*lineHeightsecondLine) );
         })
-        const fontSizeThirdLine = 50 * widthParameter
-        const lineHeighThirdLine = 50 * widthParameter
+        const fontSizeThirdLine = 30
+        const lineHeighThirdLine = 27
         const thirdLine = thirdLineText.split('\n');
         thirdLine.forEach((line, index) => {
             ctx.font = `italic ${fontSizeThirdLine}px aktiv-grotesk`;
@@ -54,12 +51,10 @@ export const textCanvasService = (texture, windowWidth, windowHeight) => {
 }
 
 export const changingArtistNames = (ctx, number, windowWidth, windowHeight) => {
-    const widthParameter = windowWidth / normalWidth
-    const heightParameter = windowHeight / normalHeight
     const y = 195;
     const x = 25;
-    const fontSizeThirdLine = 40 * widthParameter
-    const lineHeighThirdLine = 46 * widthParameter
+    const fontSizeThirdLine = 30
+    const lineHeighThirdLine = 27
     let previousArtistDoubleLine = false;
     if (number > 0) {
         previousArtistDoubleLine = artistsList[0].split('\n').length > 1;
