@@ -76,7 +76,7 @@ const BabylonScene = ({scene, engine, engineOptions ,adaptToDeviceRatio, width, 
     }
 
     return (
-        <canvas {...opts} id="babylonCanvas" ref={onCanvasLoaded} />
+        <canvas {...opts} id="babylonCanvas" touch-action="none" ref={onCanvasLoaded} />
     )
 }
 

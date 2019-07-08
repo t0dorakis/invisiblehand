@@ -2,7 +2,7 @@ const map_range = (value, low1, high1, low2, high2) => {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
-export const paint = (textureContext, textureGround, fingerPosition, fingerIsTouching, {width, height}, {width: pixelWidth, height: pixelHeight}, current) => {
+export const paint = (textureContext, textureGround, {width, height}, {width: pixelWidth, height: pixelHeight}, current) => {
 
     const drawCircle = (r, x, y, polar, ctx, gradient) => {
         if (polar) {
@@ -57,11 +57,6 @@ export const paint = (textureContext, textureGround, fingerPosition, fingerIsTou
         textureContext.fill();
         textureContext.closePath();
 
-
         textureGround.update();
     }
-    const x = fingerPosition.x;
-    const y = fingerPosition.y;
-
-
 }

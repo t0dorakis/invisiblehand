@@ -192,20 +192,37 @@ const PageWithScene = () => {
              const current = getGroundPosition(scene);
              animateHand(scene, current)
          })
-        hammer.on("pan", (ev)=> {
+        const touchmove = (ev) => {
+            ev.preventDefault();
+            const x = ev.touches[0].clientX
+            const y = ev.touches[0].clientY
             const current = getGroundPosition(scene);
-            animateHand(scene, current)
-            if (assetsLoaded && firstTouch) {
-                firstTouch = !firstTouch
-                scene.beginAnimation(hand, 0, 50, true);
+            console.log(ev)
+            if ((current !== null) && firstRenderDone && assetsLoaded) {
+                animateHand(scene, current)
+                if (firstTouch) {
+                    firstTouch = !firstTouch
+                    scene.beginAnimation(hand, 0, 50, true);
+                }
+                paint(frontTextureContext, frontTexture, cardOutside, pixelCard, current);
             }
-            fingerPosition = ev.center;
-            fingerIsTouching = ev.isFirst;
-            paint(frontTextureContext, frontTexture, fingerPosition, fingerIsTouching, cardOutside, pixelCard, current);
-            if (ev.isFinal){
-                fingerIsTouching = ev.isFinal
-            }
-        });
+
+        }
+        canvas.addEventListener('touchmove', touchmove, false);
+        // hammer.on("pan", (ev)=> {
+        //     const current = getGroundPosition(scene);
+        //     animateHand(scene, current)
+        //     if (assetsLoaded && firstTouch) {
+        //         firstTouch = !firstTouch
+        //         scene.beginAnimation(hand, 0, 50, true);
+        //     }
+        //     fingerPosition = ev.center;
+        //     fingerIsTouching = ev.isFirst;
+        //     paint(frontTextureContext, frontTexture, fingerPosition, fingerIsTouching, cardOutside, pixelCard, current);
+        //     if (ev.isFinal){
+        //         fingerIsTouching = ev.isFinal
+        //     }
+        // });
 
         engine.runRenderLoop(() => {
             if (scene) {
