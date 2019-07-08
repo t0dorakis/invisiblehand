@@ -124,7 +124,7 @@ const PageWithScene = () => {
 
         // CAMERA
         camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
-        camera.attachControl(canvas, true);
+        camera.attachControl(canvas, false);
         camera.focusOn([planeCanvas])
         camera.position = new BABYLON.Vector3(20,5,-30)
         camera.animations = [cameraAnimation]
@@ -192,7 +192,7 @@ const PageWithScene = () => {
              const current = getGroundPosition(scene);
              animateHand(scene, current)
          })
-        hammer.on("panleft pan panright tap press mousemove", (ev)=> {
+        hammer.on("pan", (ev)=> {
             const current = getGroundPosition(scene);
             animateHand(scene, current)
             if (assetsLoaded && firstTouch) {
