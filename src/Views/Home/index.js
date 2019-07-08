@@ -185,19 +185,12 @@ const PageWithScene = () => {
         }
         // hammerjs listens to mouse move
         // Create an instance of Hammer with the reference.
-        const hammer = new HAMMER(canvas);
 
-        let firstTouch = true;
-         canvas.addEventListener('mousemove', e => {
-             const current = getGroundPosition(scene);
-             animateHand(scene, current)
-         })
         const touchmove = (ev) => {
             ev.preventDefault();
             const x = ev.touches[0].clientX
             const y = ev.touches[0].clientY
             const current = getGroundPosition(scene);
-            console.log(ev)
             if ((current !== null) && firstRenderDone && assetsLoaded) {
                 animateHand(scene, current)
                 if (firstTouch) {
@@ -208,7 +201,30 @@ const PageWithScene = () => {
             }
 
         }
+        const pointermove = (ev) => {
+            ev.preventDefault();
+            const x = ev.clientX
+            const y = ev.clientY
+            const current = getGroundPosition(scene);
+            if ((current !== null) && firstRenderDone && assetsLoaded) {
+                animateHand(scene, current)
+                if (firstTouch) {
+                    firstTouch = !firstTouch
+                    scene.beginAnimation(hand, 0, 50, true);
+                }
+                paint(frontTextureContext, frontTexture, cardOutside, pixelCard, current);
+            }
+
+        }
+
+        let firstTouch = true;
+         canvas.addEventListener('mousemove', ev => {
+             const current = getGroundPosition(scene);
+             animateHand(scene, current)
+         })
         canvas.addEventListener('touchmove', touchmove, false);
+        canvas.addEventListener( "pointermove", pointermove)
+
         // hammer.on("pan", (ev)=> {
         //     const current = getGroundPosition(scene);
         //     animateHand(scene, current)
