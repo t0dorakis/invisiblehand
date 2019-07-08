@@ -91,8 +91,8 @@ const PageWithScene = () => {
         const pointLight2 = new BABYLON.PointLight("light", new BABYLON.Vector3(60, 60, -500), scene);
         // pointLight.direction = new BABYLON.Vector3(10,10,999);
         pointLight2.intensity = 2
-        pointLight2.diffuse = new BABYLON.Color3(0.7, 0.5, 0.2);
-        pointLight2.specular = new BABYLON.Color3(0.9, 0.5, 0.2);
+        pointLight2.diffuse = new BABYLON.Color3(0.6, 0.5, 0.3);
+        pointLight2.specular = new BABYLON.Color3(0.8, 0.4, 0.2);
 
         //Light direction is up and left
         const light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 5, -8), scene);
