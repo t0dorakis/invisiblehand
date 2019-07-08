@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import * as BABYLON from "babylonjs";
 import * as HAMMER from 'hammerjs';
+import 'pepjs';
+
 import { Store } from '../../Store';
 
 

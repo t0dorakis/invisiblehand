@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { StoreProvider } from './Store';
 import { BrowserRouter } from "react-router-dom";
+import 'pepjs'
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
