@@ -14,7 +14,7 @@ export const Materials = {
      // frontMaterial.bumpTexture = new BABYLON.Texture("./assets/Dust_Fibers_001.jpg", scene);
      // frontMaterial.diffuseTexture = new BABYLON.Texture("./assets/Dust_Fibers_001.jpg", scene);
 
-     frontMaterial.alpha = 0.9;
+     frontMaterial.alpha = 0.96;
 
      // dust alternative
      // frontMaterial.diffuseTexture = new BABYLON.Texture("./assets/Dust_Fibers_001.jpg", scene);

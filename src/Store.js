@@ -4,7 +4,8 @@ export const Store = React.createContext();
 
 const initialState = {
     fingerPosition: {x: 0, y: 0},
-    fingerIsTouching: false
+    fingerIsTouching: false,
+    loadingDone: false
 }
 
 function reducer(state, action) {
@@ -15,6 +16,8 @@ function reducer(state, action) {
             return { ...state, fingerIsTouching: true };
         case 'FINGER_STOPS_TOUCHING':
             return { ...state, fingerIsTouching: false };
+        case 'SET_BABYLON_LOADING_DONE':
+            return { ...state, loadingDone: true };
         default:
             return state;
     }

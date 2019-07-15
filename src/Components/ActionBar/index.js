@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ActionBar.scss'
 import { Link, withRouter } from "react-router-dom";
 
 
 // FUNCTIONAL COMPONENT
 const ActionBar = (props) => {
+    // const [time, setTime] = useState(50);
+    // const timer = setInterval(() => setTime(time - 1), 1);
+    //
+    // if (time < 0) {
+    //     timer.clearInterval()
+    // }
+
+
     console.log(props)
     const checkIfHome = props.location.pathname === '/'
     const menuList = props.links.map((link) => {
@@ -13,6 +21,7 @@ const ActionBar = (props) => {
 
     return (
         <div className="action-bar">
+            {/*{time}*/}
             {!checkIfHome ? (
                 <div className="back-button">
                     <Link to="/">
@@ -28,12 +37,14 @@ const ActionBar = (props) => {
                 </ul>)
             }
             <div className="hand-shake">
-                <div className="vertical-text">
-                    handshake
+                {/*<div className="vertical-text">*/}
+                    {/*handshake*/}
+                {/*</div>*/}
+                <div className="circle">
+                    <a href="mailto:mail@invisiblehandagency.com">
+                        <div className="logo" />
+                    </a>
                 </div>
-                <a href="mailto:mail@invisiblehandagency.com">
-                    <div className="logo" />
-                </a>
             </div>
         </div>
     )

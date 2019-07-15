@@ -4,7 +4,7 @@
 }
 a {
   text-decoration: none;
-  color: #444;
+  color: $beige;
 }
 .action-bar {
   position: fixed;
@@ -26,12 +26,11 @@ a {
       padding-left: 20px;
       padding-bottom: 20px;
       a {
-        color: #444;
+        color: $beige;
       }
     }
   }
   .hand-shake {
-    width: 50px;
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
@@ -41,6 +40,21 @@ a {
     .logo {
       transition: all 0.1s ease;
     }
+    .circle {
+      background-color: $beige;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 19px 38px rgba(0,0,0,0.20), 0 15px 12px rgba(0,0,0,0.16);
+      transition: all 0.1s ease;
+      &:hover{
+        transform: scale(1.1);
+      }
+    }
 
     .vertical-text {
       position: relative;
@@ -48,22 +62,23 @@ a {
       top: -60px;
       font-size: 10pt;
       right: 4%;
-      color: #444;
+      color: $beige;
       transform: rotate(90deg);
       transition: all 0.1s ease;
       letter-spacing: 0.9pt;
     }
     &:hover {
       .logo {
-        transform: scale(1.1);
+        //transform: scale(1.1);
       }
       .vertical-text {
         top: -53px;
       }
     }
     .logo {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 42px;
+      margin-top: 3px;
       background: url(../../assets/icons/handshake.svg) no-repeat center;
     }
   }

@@ -17,7 +17,6 @@ const BabylonScene = ({scene, engine, engineOptions ,adaptToDeviceRatio, width, 
             engine.resize();
         }
     };
-
     useEffect(() => {
             engine = new BABYLON.Engine(
                 canvas,
@@ -25,7 +24,6 @@ const BabylonScene = ({scene, engine, engineOptions ,adaptToDeviceRatio, width, 
                 engineOptions,
                 adaptToDeviceRatio
             );
-
             scene = new BABYLON.Scene(engine);
 
             if (typeof onSceneMount === "function") {

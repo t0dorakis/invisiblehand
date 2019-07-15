@@ -2,8 +2,13 @@ const normalWidth = 500
 const normalHeight = 900
 
 const headlineText = 'Invisible\nHand'
-const secondLineText = 'ARTIST\nCONSULTANCY'
+const secondLineText = 'Artist Consultancy &\nLabel Management'
 const thirdLineText = 'shaking\nhands for:'
+
+const fontName = 'aktiv-grotesk'
+
+export const loadFonts = () => document.fonts.load(`10pt ${fontName}`).then(res => res)
+
 
 export const artistsList = ['MARCEL\nDETTMANN', 'FJAAK', 'GIAN', 'I$A', 'VICTOR']
 
@@ -12,30 +17,31 @@ export const textCanvasService = (texture, windowWidth, windowHeight) => {
 
     const fontSizeHeadline = 80
     const lineHeightHeadline = 70
-
     const getInitialText = () => {
         ctx.fillStyle = "rgba(255, 255, 255, 1)";
         ctx.fillRect(0, 0, windowWidth, windowHeight);
         const headLines = headlineText.split('\n');
-        const x = 25;
+        const x = ctx.canvas.width / 2;
         const y = 100;
+
+        ctx.textAlign = "center";
         headLines.forEach((headline, index) => {
-            ctx.font = `${fontSizeHeadline}px aktiv-grotesk`;
+            ctx.font = `bold ${fontSizeHeadline}px ${fontName}`;
             ctx.strokeStyle = 'black'
-            ctx.lineWidth = 6;
+            ctx.lineWidth = 4;
             ctx.miterLimit=2;
             ctx.lineJoin = 'round'
             ctx.strokeText(headline, x, y + (index*lineHeightHeadline) );
             ctx.fillStyle = 'white';
             ctx.fillText(headline, x, y + (index*lineHeightHeadline) );
         })
-        const fontSizeSecondLine = 30
-        const lineHeightsecondLine = 27
+        const fontSizeSecondLine = 20
+        const lineHeightsecondLine = 24
         const secondLine = secondLineText.split('\n');
         secondLine.forEach((headline, index) => {
             ctx.font = `lighter ${fontSizeSecondLine}px aktiv-grotesk`;
             ctx.fillStyle = 'black';
-            ctx.fillText(headline, x, y * (headLines.length + 0.2) + (index*lineHeightsecondLine) );
+            ctx.fillText(headline, x, y * (headLines.length) + (index*lineHeightsecondLine) );
         })
         const fontSizeThirdLine = 30
         const lineHeighThirdLine = 27
@@ -52,7 +58,7 @@ export const textCanvasService = (texture, windowWidth, windowHeight) => {
 
 export const changingArtistNames = (ctx, number, windowWidth, windowHeight) => {
     const y = 195;
-    const x = 25;
+    const x = ctx.canvas.width / 2;
     const fontSizeThirdLine = 30
     const lineHeighThirdLine = 27
     let previousArtistDoubleLine = false;
@@ -70,7 +76,7 @@ export const changingArtistNames = (ctx, number, windowWidth, windowHeight) => {
     artist.forEach((line, index) => {
         ctx.font = `lighter ${fontSizeThirdLine}px aktiv-grotesk`;
         ctx.fillStyle = 'black';
-        ctx.fillText(line, x, y + 230 + (lineHeighThirdLine * (number + artistModifer)) + (index *lineHeighThirdLine));
+        ctx.fillText(line, x, y + 230 + (lineHeighThirdLine * (number + artistModifer)) + (index * lineHeighThirdLine));
     })
     return ctx
 }
