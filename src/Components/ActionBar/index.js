@@ -41,7 +41,7 @@ const ActionBar = (props) => {
                     {/*handshake*/}
                 {/*</div>*/}
                 <div className="circle">
-                    <a href="mailto:mail@invisiblehandagency.com">
+                    <a href="mailto:handshake@invisiblehand.agency">
                         <div className="logo" />
                     </a>
                 </div>
