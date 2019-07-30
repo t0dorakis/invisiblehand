@@ -12,6 +12,7 @@
   align-items: center;
   flex-direction: column;
   background-color: $background;
+  color: $beige;
   &--text {
     animation: blink-animation 1s steps(5, start) infinite;
   }

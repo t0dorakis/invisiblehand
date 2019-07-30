@@ -5,18 +5,20 @@ import { Store } from '../../Store';
 import './Home.scss';
 import LoadingScreen from './../../Components/LoadingScreen'
 
-import { textCanvasService, changingArtistNames, artistsList, loadFonts } from './../../Components/BabylonScene/textCanvasService.js'
+import { textCanvasService, changingArtistNames, artistsList, loadFonts, smallTextAnimation } from './../../Components/BabylonScene/textCanvasService.js'
 import { Materials } from "../../Components/BabylonScene/materialService"
 import { paint } from '../../Components/BabylonScene/paintService'
 import { cameraAnimationKeys, handAnimationKeys, cameraPosition } from '../../Components/BabylonScene/animationKeys'
 import { isTouchDevice } from '../../utils/isTouchDevice'
 import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; // import the component above linking to file we just created.
 
-import textCanvasTexture from '../../assets/textures/textCanvasPreSetTexture.jpg'
+import textCanvasTexture from '../../assets/textures/verticalSimple2.jpg'
 
 const PageWithScene = () => {
     const { state, dispatch } = useContext(Store);
     const [loading, setLoading] = useState(true);
+
+
 
     let loadingComponentShown = true
     let assetsLoaded, initalDone, firstRenderDone, firstMountDone = false;
@@ -24,15 +26,15 @@ const PageWithScene = () => {
     const isTouchDeviceCheck = isTouchDevice();
     const card = {
         width: 11,
-        height: 20
+        height: 17
     }
     const cardOutside = {
-        width: window.innerWidth > 600 ? card.width + 2 : card.width + 9,
-        height: window.innerWidth > 600 ? card.height + 2 : card.height + 9
+        width: isTouchDeviceCheck ? card.width + 5 : card.width + 55,
+        height: isTouchDeviceCheck ? card.height + 5 : card.height + 55
     }
     const pixelCard = {
-        width: card.width * 32,
-        height: card.height * 32,
+        width: card.width * (isTouchDeviceCheck ? 64 : 128),
+        height: card.height * (isTouchDeviceCheck ? 64 : 128),
     }
     let hand;
     let camera;
@@ -44,7 +46,7 @@ const PageWithScene = () => {
     const initialSetup = (scene, canvas) => {
         // // SKY
         scene.ambientColor = new BABYLON.Color3(1, 1, 1);
-        scene.clearColor = new BABYLON.Color4(0.84, 0.6875, 0.59765625, 1);
+        scene.clearColor = new BABYLON.Color4(247 / 255, 201 / 255, 168 / 255, 1);
 
         // Skybox
         // const skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {size:90.0}, scene);
@@ -116,6 +118,34 @@ const PageWithScene = () => {
         materialText.diffuseColor = new BABYLON.Color3(1, 1, 1);
         textCanvas.material = materialText;
         materialText.diffuseTexture = new BABYLON.Texture(textCanvasTexture, scene);
+      // textCanvas.visibility = 0
+
+        // small animation text plane
+      const smallCard = {
+        width: card.width - 3,
+        height: 5
+      }
+      const smallCardPixel = {
+        width: smallCard.width * 60,
+        height: smallCard.height *60
+      }
+
+      const animationTextCanvas = BABYLON.MeshBuilder.CreatePlane("animationTextCanvas",smallCard, scene);
+      animationTextCanvas.position.z = 2.9 // move behind front
+      animationTextCanvas.position.y = -1.88 // move behind front
+
+      const dynamicTexture = new BABYLON.DynamicTexture('dynamicTexture', smallCardPixel, scene);
+      smallTextAnimation(dynamicTexture, smallCardPixel)
+      //Check width of text for given font type at any size of font
+
+
+      const animationTextMaterial = new BABYLON.StandardMaterial("Mat", scene);
+      // animationTextMaterial.diffuseColor = new BABYLON.Color3(1, 1, 1);
+      animationTextMaterial.ambientColor = new BABYLON.Color3(1, 1, 1);
+      animationTextMaterial.diffuseColor = new BABYLON.Color3(1, 1, 1);
+      animationTextMaterial.diffuseTexture = dynamicTexture;
+      animationTextCanvas.material = animationTextMaterial;
+      // dynamicTexture.drawText('DETTMANN', 20, 20, 'bold 300px aktiv-grotesk', 'black', 'white', true, true);
 
 
         const gl = new BABYLON.GlowLayer("planeCanvas", scene);
@@ -127,12 +157,15 @@ const PageWithScene = () => {
 
         // CAMERA
         camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
-        camera.attachControl(canvas, false);
+        console.log(isTouchDevice)
+        if (isTouchDevice()) {
+          camera.attachControl(canvas, false);
+        }
         camera.focusOn([planeCanvas])
         camera.position = cameraPosition
         camera.animations = [cameraAnimation]
 
-        pointLight2.excludedMeshes.push(textCanvas);
+        pointLight2.excludedMeshes.push(textCanvas, animationTextCanvas);
         light.excludedMeshes.push(planeCanvas);
 
         // const dynamicTextTexture = new BABYLON.DynamicTexture("dynamic text texture", pixelCard, scene);
@@ -146,7 +179,7 @@ const PageWithScene = () => {
         // dynamicTextTexture.update();
         initalDone = true
 
-        return { frontMaterial, frontTexture, frontTextureContext,camera}
+        return { frontMaterial, frontTexture, frontTextureContext,camera, dynamicTexture, smallCardPixel}
     }
 
 
@@ -162,7 +195,7 @@ const PageWithScene = () => {
     const onSceneMount = (e) => {
         loadFonts()
         let { canvas, scene, engine } = e;
-        let { frontTexture, frontTextureContext, camera } = initialSetup(scene, canvas)
+        let { frontTexture, frontTextureContext, camera, dynamicTexture, smallCardPixel } = initialSetup(scene, canvas)
         let lastHandPosition = handStartingPosition;
 
         scene.beginAnimation(camera, 0, 1200, true);
@@ -181,7 +214,8 @@ const PageWithScene = () => {
                 easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEIN);
                 tempAnimation.setEasingFunction(easingFunction);
                 tempAnimation.setKeys(tempKeys)
-                scene.beginDirectAnimation(hand, [tempAnimation], 0, 3, false, 5, (callback) => {
+
+              scene.beginDirectAnimation(hand, [tempAnimation], 0, 3, false, 5, (callback) => {
                 });
                 lastHandPosition = aimedHandPosition
             }
@@ -200,9 +234,8 @@ const PageWithScene = () => {
                     firstTouch = !firstTouch
                     scene.beginAnimation(hand, 0, 50, true);
                 }
-                paint(frontTextureContext, frontTexture, cardOutside, pixelCard, current);
+                paint(frontTextureContext, frontTexture, cardOutside, pixelCard, current, isTouchDeviceCheck);
             }
-
         }
 
 
@@ -236,6 +269,11 @@ const PageWithScene = () => {
         canvas.addEventListener( "pointermove", pointermove)
         firstMountDone = true
 
+      // change name
+      setInterval(() => {
+        smallTextAnimation(dynamicTexture, smallCardPixel)
+      }, 2000)
+
         engine.runRenderLoop(() => {
             if (scene) {
                 scene.render();
@@ -243,6 +281,7 @@ const PageWithScene = () => {
                     loadingCounter ++
                     if (loadingCounter === 4) {
                         setLoading(false)
+                      // changingNamesTimer = setAnimationTimer(smallTextAnimation(dynamicTexture, smallCardPixel))
                     }
                 }
                 firstRenderDone = true

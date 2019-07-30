@@ -2,7 +2,7 @@ const map_range = (value, low1, high1, low2, high2) => {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
-export const paint = (textureContext, textureGround, {width, height}, {width: pixelWidth, height: pixelHeight}, current) => {
+export const paint = (textureContext, textureGround, {width, height}, {width: pixelWidth, height: pixelHeight}, current, isTouchDeviceCheck) => {
 
     const drawCircle = (r, x, y, polar, ctx, gradient) => {
         if (polar) {
@@ -19,7 +19,7 @@ export const paint = (textureContext, textureGround, {width, height}, {width: pi
         ctx.closePath()
     }
 
-    const radius = 20;
+  const radius = isTouchDeviceCheck ? 40 : 60
 
     const maxX =  width / 2
     const minX = - width / 2

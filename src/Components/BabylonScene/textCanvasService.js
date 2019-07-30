@@ -10,7 +10,7 @@ const fontName = 'aktiv-grotesk'
 export const loadFonts = () => document.fonts.load(`10pt ${fontName}`).then(res => res)
 
 
-export const artistsList = ['MARCEL\nDETTMANN', 'FJAAK', 'GIAN', 'I$A', 'VICTOR']
+export const artistsList = ['MARCEL DETTMANN', 'FJAAK | Spandau20', 'LACKRec', 'GIAN', 'I$A', 'VICTOR']
 
 export const textCanvasService = (texture, windowWidth, windowHeight) => {
     const ctx = texture.getContext('2d');
@@ -57,7 +57,7 @@ export const textCanvasService = (texture, windowWidth, windowHeight) => {
 }
 
 export const changingArtistNames = (ctx, number, windowWidth, windowHeight) => {
-    const y = 195;
+    const y = 10;
     const x = ctx.canvas.width / 2;
     const fontSizeThirdLine = 30
     const lineHeighThirdLine = 27
@@ -79,4 +79,29 @@ export const changingArtistNames = (ctx, number, windowWidth, windowHeight) => {
         ctx.fillText(line, x, y + 230 + (lineHeighThirdLine * (number + artistModifer)) + (index * lineHeighThirdLine));
     })
     return ctx
+}
+
+let counter = 0
+export const smallTextAnimation = (dynamicTexture, sizes) => {
+  if (counter >= artistsList.length) counter = 0
+
+  const ctx = dynamicTexture.getContext();
+  const fontType = 'aktiv-grotesk'
+  const text = artistsList[counter]
+  const size = 12; //any value will work
+  ctx.font = size + "px " + fontType;
+  const textWidth = ctx.measureText(text).width;
+
+
+  //Calculate ratio of text width to size of font used
+  const ratio = textWidth/size;
+
+  //set font to be actually used to write text on dynamic texture
+  // const fontSize = Math.floor(sizes.width / (ratio * 1.5)); //size of multiplier (1) can be adjusted, increase for smaller text
+  const fontSize = 40;
+  const font = fontSize + "px " + fontType;
+
+  //Draw text
+  dynamicTexture.drawText(text, null, null, font, "#000000", "#fffaf7", true);
+  counter ++
 }

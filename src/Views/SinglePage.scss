@@ -5,10 +5,34 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  max-height: calc(100vh - #{$action-bar-height});
+  background-color: $beige;
+  min-height: 100vh;
   overflow-x: auto;
+  p {
+    white-space: normal;
+  }
   h5 {
     margin-block-end: 0px;
+  }
+  a {
+    color: $black;
+    &:hover {
+      color: #888;
+    }
+  }
+  .small {
+    font-size: 0.83em;
+    padding-right: 0.3em;
+  }
+  .muted {
+    color: #888;
+  }
+  .colored {
+    font-weight: normal;
+    color: blue;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   article {
     margin: 30px;

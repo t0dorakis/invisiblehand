@@ -13,7 +13,7 @@ const LoadingScreen = (props) => {
                 <CSSTransition classNames="dialog" timeout={300}>
                     <div className="loading-screen">
                         <div className="loading-screen--text">
-                            LOADING
+                            loading…
                         </div>
                     </div>
                 </CSSTransition>
