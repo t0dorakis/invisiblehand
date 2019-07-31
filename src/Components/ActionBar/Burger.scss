@@ -1,11 +1,12 @@
 @import '../../variables';
 
 .burger {
-  margin-bottom: 45px;
+  //margin-bottom: 45px;
   width: 40px;
   height: 60px;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   transition: all 0.2s;
   :nth-child(2) {
@@ -13,13 +14,14 @@
   }
   &--bar {
     transition: all 0.2s ease;
-    height: 2px;
+    height: 1px;
     width: 30px;
-    background-color: $beige;
+    background-color: $black;
   }
 }
 
 .isActive {
+  transform: translateX(3.5px);
   :nth-child(1) {
     transform: rotate(45deg) translateY(5px);
   }

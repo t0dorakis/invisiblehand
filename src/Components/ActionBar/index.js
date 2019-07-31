@@ -18,30 +18,38 @@ const ActionBar = (props) => {
     return (
         <div className="action-bar">
             {!checkIfHome ? (
-                <div className="back-button">
-                    <Link to="/">
-                        BACK
-                    </Link>
-                </div>
-            ) : ( <div className="mobile-menu">
               <Link to="/">
-                <Burger isActive={true}></Burger>
+                <div className="button-box">
+                    <div className="circle">
+                        BACK
+                    </div>
+                  </div>
               </Link>
+            ) : (
+              <div className="hide-on-desktop">
+                <div className="button-box">
+                  <div className="circle">
+                    <Burger isActive={true}></Burger>
+                    <div className="animation-bar" style={mobileMenuOpen ? { height: 275 + "px" } : { height: 60+ "px"}}></div>
+                  </div>
+                </div>
                 {
                   mobileMenuOpen &&
-                  <ul className="action-bar--mobile-menu mobile-extra-margin">
-                    {menuList}
-                  </ul>
+                  <div className="mobile-menu">
+                    <ul className="action-bar--mobile-menu mobile-extra-margin">
+                      {menuList}
+                    </ul>
+                  </div>
                 }
               </div>
             )}
           { checkIfHome &&
-            <ul className="action-bar--menu-list">
+            <ul className="action-bar--menu-list hide-on-mobile">
               {menuList}
             </ul>
           }
-            <div className="hand-shake">
-                <div className="circle">
+            <div className="button-box">
+                <div className="circle scale-on-hover">
                     <a href="mailto:handshake@invisiblehand.agency">
                         <div className="logo" />
                     </a>

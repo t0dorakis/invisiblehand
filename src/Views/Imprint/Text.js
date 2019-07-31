@@ -10,29 +10,31 @@ const Text = () => (
             Invisible Hand GbR <br />
             Urbanstr. 115 <br />
             10967 Berlin <br />
-             Vertreten durch Claudio Banti <br />
+            Vertreten durch Claudio Banti
       </p>
       <p>
-             <br />
-            <span className="small">Tel.:</span>+49 157 31661319 <br />
-        <span className="small">E-Mail:</span> <a href="mailto:handshake@invisiblehand.agency">handshake@invisiblehand.agency</a> <br />
+
+            {/*<span className="small">Tel.:</span>*/}
+        +49 (0) 157 316 613 19 <br />
+        {/*<span className="small">E-Mail:</span>*/}
+        <a className="underlined-link" href="mailto:handshake@invisiblehand.agency">handshake@invisiblehand.agency</a> <br />
       </p>
 
-      <h5>Umsatzsteuer-Identifikationsnummer
-        <br />gemäß §27a Umsatzsteuergesetz:</h5>
-      <p>
-                DE <br />
-                St.-Nr. <br />
-      </p>
+      {/*<h5>Umsatzsteuer-Identifikationsnummer*/}
+      {/*  <br />gemäß §27a Umsatzsteuergesetz:</h5>*/}
+      {/*<p>*/}
+      {/*          DE <br />*/}
+      {/*          St.-Nr. <br />*/}
+      {/*</p>*/}
             <h5>
-                Webdesign
+                Webseite
             </h5>
         <p>
-          <a href="mailto:info@200kilo.com">200kilo</a>
+          <a class="underlined-link" href="mailto:info@200kilo.com">200kilo</a>
         </p>
         <h5>Haftungsausschluss</h5>
         <p>
-            Haftung für InhalteDie Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
         </p>
 
         <h5>Haftung für Links</h5>
