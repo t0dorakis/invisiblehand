@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2953ba0-b1ba-44b2-9552-c5482525d5aa" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Italic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Italic.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/SinglePage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/SinglePage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +93,7 @@
       <workItem from="1564607412297" duration="5151000" />
       <workItem from="1564614588657" duration="522000" />
       <workItem from="1565114103177" duration="3289000" />
-      <workItem from="1565198917600" duration="5469000" />
+      <workItem from="1565198917600" duration="5758000" />
     </task>
     <servers />
   </component>
