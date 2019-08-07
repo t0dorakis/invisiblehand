@@ -5,7 +5,7 @@ import { StoreProvider } from './Store';
 import { BrowserRouter } from "react-router-dom";
 import 'pepjs'
 
-import './index.css';
+import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import AppRouter from "./AppRouter";
 

@@ -1,11 +1,24 @@
 @import url("https://use.typekit.net/orl5sme.css");
 
 @mixin normal-font {
-  font-family: aktiv-grotesk, sans-serif;
-  letter-spacing: 0.3pt;
-  font-weight: 400;
+  font-family: Favorit Regular, sans-serif;
+  font-weight: 300;
   font-style: normal;
   line-height: 155%;
+}
+
+@mixin underlined-font {
+  font-family: Favorit Regular Lining, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 155%;
+}
+
+@mixin bold-font {
+  font-family: Favorit Bold, sans-serif;
+}
+@mixin italic-font {
+  font-family: Favorit Italic, sans-serif;
 }
 
 $action-bar-height: 100px;

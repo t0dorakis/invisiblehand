@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2953ba0-b1ba-44b2-9552-c5482525d5aa" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Bold.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Bold.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritLiningStd-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Bold.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Bold.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Italic.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Italic.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/FavoritStd-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/Burger.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/Burger.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Imprint/Text.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Imprint/Text.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/SinglePage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/SinglePage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/variables.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +56,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/fonts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
@@ -56,19 +66,19 @@
     <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/assets/maps" />
-      <recent name="$PROJECT_DIR$/src/Views/Imprint" />
-      <recent name="$PROJECT_DIR$/src/Views/Terms" />
-      <recent name="$PROJECT_DIR$/src/assets/shader" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/textures" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/src/Components/BabylonScene" />
       <recent name="$PROJECT_DIR$/src/Views/Home" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/fonts" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/assets/maps" />
+      <recent name="$PROJECT_DIR$/src/Views/Imprint" />
+      <recent name="$PROJECT_DIR$/src/Views/Terms" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -97,6 +107,9 @@
       <workItem from="1564593735056" duration="993000" />
       <workItem from="1564595587718" duration="813000" />
       <workItem from="1564607412297" duration="5151000" />
+      <workItem from="1564614588657" duration="522000" />
+      <workItem from="1565114103177" duration="3289000" />
+      <workItem from="1565198917600" duration="5469000" />
     </task>
     <servers />
   </component>
