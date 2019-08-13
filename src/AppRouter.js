@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, hashHistory} from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Views/Home'
 import Terms from './Views/Terms'
 import DataSecurity from './Views/DataSecurity'

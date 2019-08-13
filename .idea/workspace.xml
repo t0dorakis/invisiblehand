@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2953ba0-b1ba-44b2-9552-c5482525d5aa" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/textures/favoritDoubleSide-min.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/animationKeys.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/animationKeys.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/materialService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/materialService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/paintService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/paintService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Imprint/Text.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Imprint/Text.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,19 +59,19 @@
     <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/textures" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/public/assets" />
-      <recent name="$PROJECT_DIR$/src/Components/BabylonScene" />
-      <recent name="$PROJECT_DIR$/src/Views/Home" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/fonts" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/assets/maps" />
       <recent name="$PROJECT_DIR$/src/Views/Imprint" />
       <recent name="$PROJECT_DIR$/src/Views/Terms" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/textures" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/public/assets" />
+      <recent name="$PROJECT_DIR$/src/Components/BabylonScene" />
+      <recent name="$PROJECT_DIR$/src/Views/Home" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -93,7 +102,12 @@
       <workItem from="1564607412297" duration="5151000" />
       <workItem from="1564614588657" duration="522000" />
       <workItem from="1565114103177" duration="3289000" />
-      <workItem from="1565198917600" duration="5758000" />
+      <workItem from="1565198917600" duration="5939000" />
+      <workItem from="1565258933806" duration="18283000" />
+      <workItem from="1565606972115" duration="87000" />
+      <workItem from="1565610861860" duration="643000" />
+      <workItem from="1565639417598" duration="570000" />
+      <workItem from="1565698603157" duration="724000" />
     </task>
     <servers />
   </component>

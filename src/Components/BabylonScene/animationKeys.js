@@ -36,6 +36,81 @@ export const cameraAnimationKeys = [
     }
 ]
 
+const cardFlipFrameRate = 50;
+const cardFlipRotationYKeys = [
+  {
+    frame: 0,
+    value: 0
+  },
+  {
+    frame: cardFlipFrameRate / 2,
+    value: Math.PI / 2
+  },
+  {
+    frame: cardFlipFrameRate,
+    value:  Math.PI
+  }
+];
+const cardFlipRotationY = new BABYLON.Animation("cardFlipRotationY", "rotation.y", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
+cardFlipRotationY.setKeys(cardFlipRotationYKeys);
+const cardFlipRotationZKeys = [
+  {
+    frame: 0,
+    value: 0
+  },
+  {
+    frame: cardFlipFrameRate / 2,
+    value: Math.PI / 15
+  },
+  {
+    frame: cardFlipFrameRate,
+    value: Math.PI / 30
+  }
+];
+const cardFlipRotationZ = new BABYLON.Animation("cardFlipRotationY", "rotation.z", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
+cardFlipRotationZ.setKeys(cardFlipRotationZKeys);
+
+const cardFlipPositionKeys = [
+  {
+    frame: 0,
+    value: 3
+  },
+  {
+    frame: cardFlipFrameRate / 2,
+    value: 10
+  },
+  {
+    frame: cardFlipFrameRate,
+    value: 3
+  }
+];
+const cardFlipPosition = new BABYLON.Animation("cardFlipPosition", "position.z", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
+
+
+const cameraAnimationFramerate = 50;
+const cameraAnimationXKeys = [
+  {
+    frame: 0,
+    value: 3
+  },
+  {
+    frame: cameraAnimationFramerate / 2,
+    value: 10
+  },
+  {
+    frame: cameraAnimationFramerate,
+    value: 3
+  }
+];
+const cameraAnimationX = new BABYLON.Animation("cameraAnimationX", "position.x", cameraAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
+cameraAnimationX.setKeys(cameraAnimationXKeys);
+
+
+
+cardFlipPosition.setKeys(cardFlipPositionKeys);
+
+export { cameraAnimationX, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition }
+
 export const handAnimationKeys = [
     {
         frame: 0,

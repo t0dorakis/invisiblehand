@@ -46,7 +46,7 @@ export const Materials = {
      frontMaterial.specularPower = 64;
      frontMaterial.useGlossinessFromSpecularMapAlpha = true;
      // frontMaterial.diffuseColor = BABYLON.Color3.Black();
-     frontMaterial.roughness = 3;
+     frontMaterial.roughness = 0;
 
      // paint black
      const frontTextureContext = texture.getContext();
@@ -103,7 +103,7 @@ export const Materials = {
         glass.cameraExposure = 0.66;
         glass.cameraContrast = 1.66;
         glass.microSurface = 1;
-        glass.reflectivityColor = new BABYLON.Color3(0.2, 0.2, 0.2);
+        glass.reflectivityColor = new BABYLON.Color3(0.2, 0.4, 0.2);
         glass.albedoColor = new BABYLON.Color3(0.95, 0.95, 0.95);
         return glass
     }

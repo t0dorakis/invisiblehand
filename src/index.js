@@ -2,7 +2,6 @@ import './variables.scss'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { StoreProvider } from './Store';
-import { BrowserRouter } from "react-router-dom";
 import 'pepjs'
 
 import './index.scss';
@@ -13,9 +12,6 @@ import AppRouter from "./AppRouter";
 ReactDOM.render(
         <StoreProvider>
             <AppRouter/>
-            {/*<div className="App">*/}
-                {/*<PageWithScene />*/}
-            {/*</div>*/}
         </StoreProvider>
     , document.getElementById('root'));
 

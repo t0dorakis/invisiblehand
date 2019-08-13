@@ -34,23 +34,23 @@ export const paint = (textureContext, textureGround, {width, height}, {width: pi
         gradient.addColorStop(0, 'rgba(0,0,0,1)');
         gradient.addColorStop(1, 'rgba(0,0,0,0)');
 
-        const maxDist=8;
-        const points=new Array();
-        for (let i = 0; i < 15; i++) {
-            let d=Math.pow(Math.random(),2);
-            const a=Math.random()*Math.PI*2;
-            const r=0.1+(Math.pow(1-d,2)*4);
-            d*=maxDist;
-            points.push({
-                d:d,
-                a:a,
-                r:r
-            });
-        }
+        // const maxDist=8;
+        // const points=new Array();
+        // for (let i = 0; i < 15; i++) {
+        //     let d=Math.pow(Math.random(),2);
+        //     const a=Math.random()*Math.PI*2;
+        //     const r=0.1+(Math.pow(1-d,2)*4);
+        //     d*=maxDist;
+        //     points.push({
+        //         d:d,
+        //         a:a,
+        //         r:r
+        //     });
+        // }
         textureContext.beginPath();
         textureContext.beginPath();
         textureContext
-            .arc(x, y, radius, 0, 2 * Math.PI)
+            .arc(Math.floor(x), Math.floor(y), radius, 0, 2 * Math.PI)
         textureContext.globalCompositeOperation = "destination-out";
         textureContext.strokeStyle = gradient;
         textureContext.fillStyle = gradient;

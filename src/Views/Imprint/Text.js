@@ -30,7 +30,7 @@ const Text = () => (
                 Webseite
             </h5>
         <p>
-          <a class="underlined-link" href="mailto:info@200kilo.com">200kilo</a>
+          <a className="underlined-link" href="mailto:info@200kilo.com">200kilo</a>
         </p>
         <h5>Haftungsausschluss</h5>
         <p>
