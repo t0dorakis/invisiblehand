@@ -87,82 +87,29 @@ const cardFlipPositionKeys = [
 const cardFlipPosition = new BABYLON.Animation("cardFlipPosition", "position.z", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
 
 
-const lightAnimationFramerate = 10000;
-const lightAnimationXKeys = [
-  {
-    frame: 0,
-    value: -20
-  },
-  {
-    frame: lightAnimationFramerate / 4,
-    value: -10
-  },
-  {
-    frame: (lightAnimationFramerate / 4) * 2,
-    value: 0
-  },
-  {
-    frame: (lightAnimationFramerate / 4) * 3,
-    value: 10
-  },
-  {
-    frame: lightAnimationFramerate,
-    value: 20
-  }
-];
-const lightAnimationYKeys = [
-  {
-    frame: 0,
-    value: -20
-  },
-  {
-    frame: lightAnimationFramerate / 4,
-    value: -10
-  },
-  {
-    frame: (lightAnimationFramerate / 4) * 2,
-    value: 0
-  },
-  {
-    frame: (lightAnimationFramerate / 4) * 3,
-    value: 10
-  },
-  {
-    frame: lightAnimationFramerate,
-    value: 20
-  }
-];
-const lightAnimationXRotationKeys = [
-  {
-    frame: 0,
-    value: Math.PI / 4
-  },
-  {
-    frame: lightAnimationFramerate / 4,
-    value: Math.PI / 2
-  },
-  {
-    frame: (lightAnimationFramerate / 4) * 2,
-    value: 0
-  },
-  {
-    frame: (lightAnimationFramerate / 4) * 3,
-    value: 0.1
-  },
-  {
-    frame: lightAnimationFramerate,
-    value: 0.2
-  }
-];
-const lightAnimationX = new BABYLON.Animation("lightAnimationX", "position.x", lightAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
-const lightAnimationY = new BABYLON.Animation("lightAnimationY", "position.y", lightAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
-const lightAnimationXRotation = new BABYLON.Animation("lightAnimationXRotation", "direction.x", lightAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
-lightAnimationX.setKeys(lightAnimationXKeys);
-lightAnimationY.setKeys(lightAnimationYKeys);
-lightAnimationXRotation.setKeys(lightAnimationXRotationKeys);
+const lightAnimationFramerate = 500;
+let alpha = 0;
 
+const lightAnimationPositionKeys = [];
 
-const lightAnimationArray = [lightAnimationX, lightAnimationY]
+for (var i = 0; i < lightAnimationFramerate; i++){
+  var x = 10 * Math.cos(alpha);
+  var y = 16 * Math.sin(alpha);
+  var z = -30;
+
+  lightAnimationPositionKeys.push({
+    frame: i,
+    value: new BABYLON.Vector3(x, y, z)
+  });
+
+  alpha += 0.1;
+}
+
+const lightAnimationPosition = new BABYLON.Animation("lightAnimationX", "position", lightAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
+
+lightAnimationPosition.setKeys(lightAnimationPositionKeys);
+
+const lightAnimationArray = [lightAnimationPosition]
 
 cardFlipPosition.setKeys(cardFlipPositionKeys);
 

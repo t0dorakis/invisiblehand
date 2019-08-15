@@ -21,6 +21,8 @@ const PageWithScene = () => {
 
     let movementCounter = 0;
 
+    const firstFlipMovementFrame = 250;
+
     let loadingComponentShown = true
     let assetsLoaded, initalDone, firstRenderDone, firstMountDone = false;
     let loadingCounter = 0;
@@ -281,7 +283,7 @@ const PageWithScene = () => {
 
       const startLightAnimation = (scene) => {
           console.log('started light animation')
-        scene.beginAnimation(whiteSpotLight, 0, 100000, true);
+        scene.beginAnimation(whiteSpotLight, 0, 100000, true, 0.01);
       }
 
         const animateHand = (scene, current) => {
@@ -369,7 +371,7 @@ const PageWithScene = () => {
                     } else if (loadingCounter > 4) {
                       // console.log(movementCounter)
                       console.log(engine.getFps().toFixed() + " fps");
-                      if (movementCounter > 110 && movementCounter < 120 )  {
+                      if (movementCounter > firstFlipMovementFrame && movementCounter < (firstFlipMovementFrame + 20))  {
                         // scene.debugLayer.show();
                         console.log('REACHED LIMIT!')
                         cardFlip(scene)
