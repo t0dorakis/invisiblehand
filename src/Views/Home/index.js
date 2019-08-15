@@ -10,6 +10,7 @@ import { Materials } from "../../Components/BabylonScene/materialService"
 import { paint } from '../../Components/BabylonScene/paintService'
 import { cameraAnimationKeys, handAnimationKeys, cameraPosition, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition, lightAnimationArray } from '../../Components/BabylonScene/animationKeys'
 import { isTouchDevice } from '../../utils/isTouchDevice'
+import { chromeModifier } from '../../utils/chromeModifier'
 import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; // import the component above linking to file we just created.
 
 import textCanvasTexture from '../../assets/textures/favoritDoubleSide-min.jpg'
@@ -40,8 +41,8 @@ const PageWithScene = () => {
         height: isTouchDeviceCheck ? card.height + 20 : card.height + 55
     }
     const pixelCard = {
-        width: card.width * (isTouchDeviceCheck ? 64 : 128),
-        height: card.height * (isTouchDeviceCheck ? 64 : 128),
+        width: card.width * (isTouchDeviceCheck ? chromeModifier(32) : chromeModifier(32)),
+        height: card.height * (isTouchDeviceCheck ? chromeModifier(32) : chromeModifier(32))
     }
     let hand;
     let camera;
@@ -366,10 +367,10 @@ const PageWithScene = () => {
 
                       // changingNamesTimer = setAnimationTimer(smallTextAnimation(dynamicTexture, smallCardPixel))
                     } else if (loadingCounter > 4) {
-                      console.log(movementCounter)
+                      // console.log(movementCounter)
+                      console.log(engine.getFps().toFixed() + " fps");
                       if (movementCounter > 110 && movementCounter < 120 )  {
                         // scene.debugLayer.show();
-
                         console.log('REACHED LIMIT!')
                         cardFlip(scene)
                       }

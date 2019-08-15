@@ -1,8 +1,13 @@
+import { isTouchDevice } from '../../utils/isTouchDevice'
+import { chromeModifier } from '../../utils/chromeModifier'
+
 const map_range = (value, low1, high1, low2, high2) => {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
 let lastCurrent = {x: 99, y:99};
+
+const radius = isTouchDevice() ? chromeModifier(20) : chromeModifier(20)
 
 const checkIfFarEnough = (oldVector, newVector) => {
   const distance = 0.07;
@@ -15,7 +20,6 @@ const checkIfFarEnough = (oldVector, newVector) => {
 export const paint = (textureContext, textureGround, {width, height}, {width: pixelWidth, height: pixelHeight}, current, isTouchDeviceCheck) => {
   // this check might help improving the performance
   const distanceIsEnough = checkIfFarEnough(lastCurrent, current)
-  console.log(distanceIsEnough)
   if (distanceIsEnough) {
     lastCurrent = current
     // const drawCircle = (r, x, y, polar, ctx, gradient) => {
@@ -33,7 +37,6 @@ export const paint = (textureContext, textureGround, {width, height}, {width: pi
     //     ctx.closePath()
     // }
 
-    const radius = isTouchDeviceCheck ? 40 : 55
 
     const maxX = width / 2
     const minX = -width / 2
@@ -48,7 +51,6 @@ export const paint = (textureContext, textureGround, {width, height}, {width: pi
       gradient.addColorStop(0, 'rgba(0,0,0,1)');
       gradient.addColorStop(1, 'rgba(0,0,0,0)');
 
-      textureContext.beginPath();
       textureContext.beginPath();
       textureContext
         .arc(Math.floor(x), Math.floor(y), radius, 0, 2 * Math.PI)
