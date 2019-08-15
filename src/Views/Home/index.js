@@ -8,7 +8,7 @@ import LoadingScreen from './../../Components/LoadingScreen'
 import { textCanvasService, changingArtistNames, artistsList, loadFonts, smallTextAnimation } from './../../Components/BabylonScene/textCanvasService.js'
 import { Materials } from "../../Components/BabylonScene/materialService"
 import { paint } from '../../Components/BabylonScene/paintService'
-import { cameraAnimationKeys, handAnimationKeys, cameraPosition, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition, cameraAnimationX } from '../../Components/BabylonScene/animationKeys'
+import { cameraAnimationKeys, handAnimationKeys, cameraPosition, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition, lightAnimationArray } from '../../Components/BabylonScene/animationKeys'
 import { isTouchDevice } from '../../utils/isTouchDevice'
 import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; // import the component above linking to file we just created.
 
@@ -36,8 +36,8 @@ const PageWithScene = () => {
     }
     const cardPosition = new BABYLON.Vector3(0, 0, 3)
     const cardOutside = {
-        width: isTouchDeviceCheck ? card.width + 5 : card.width + 55,
-        height: isTouchDeviceCheck ? card.height + 5 : card.height + 55
+        width: isTouchDeviceCheck ? card.width + 20 : card.width + 55,
+        height: isTouchDeviceCheck ? card.height + 20 : card.height + 55
     }
     const pixelCard = {
         width: card.width * (isTouchDeviceCheck ? 64 : 128),
@@ -120,37 +120,42 @@ const PageWithScene = () => {
       // pointLight2.diffuse = new BABYLON.Color3(0.6, 0.5, 0.3);
       // pointLight2.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
 
-      //Light direction is up and left
-      const hemLight = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, -1), scene);
+      const hemLight = new BABYLON.HemisphericLight("hemiLight1", new BABYLON.Vector3(0, 1, -1), scene);
       hemLight.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
       hemLight.groundColor = new BABYLON.Color3(1, 1, 1);
       hemLight.intensity = 2
-
-      //Light direction is up and left
-      const hemLight3 = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, .2, -1), scene);
-      hemLight3.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
-      hemLight3.groundColor = new BABYLON.Color3(1, 1, 1);
-      hemLight3.intensity = 1
-
-      //Light direction is up and left
-      const hemLight2 = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, -1, -1), scene);
+      //
+      // const hemLight3 = new BABYLON.HemisphericLight("hemiLight2", new BABYLON.Vector3(-1, .2, -1), scene);
+      // hemLight3.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
+      // hemLight3.groundColor = new BABYLON.Color3(1, 1, 1);
+      // hemLight3.intensity = 0
+      //
+      // const Hemilight4 = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 5, -8), scene);
+      // Hemilight4.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
+      // Hemilight4.groundColor = new BABYLON.Color3(1, 1, 1);
+      // Hemilight4.intensity = 1
+      //
+      const hemLight2 = new BABYLON.HemisphericLight("hemiLight3", new BABYLON.Vector3(0, -1, -1), scene);
       hemLight2.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
       hemLight2.groundColor = new BABYLON.Color3(1, 1, 1);
       hemLight2.intensity = 2
 
 
-      const spotLight = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(0, 7, -20), new BABYLON.Vector3(0, 0, 0.7), Math.PI / 2, 10, scene);
+
+
+      const spotLight = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(0, 7, -20), new BABYLON.Vector3(0, 0, 0.7), Math.PI / 2, 50, scene);
       spotLight.specular = new BABYLON.Color3(0.3, 0.4, 1);
       spotLight.groundColor = new BABYLON.Color3(1, 1, 1);
       spotLight.intensity = 0.2
 
+      const whiteSpotLight = new BABYLON.SpotLight("whiteSpotLight", new BABYLON.Vector3(0, 3, -20), new BABYLON.Vector3(-0.1, 0.3, 0.7), Math.PI / 2, 10, scene);
+      whiteSpotLight.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
+      whiteSpotLight.groundColor = new BABYLON.Color3(1, 1, 1);
+      whiteSpotLight.diffuse = new BABYLON.Color3(0, 0.1, 0);
+      whiteSpotLight.intensity = 1
+      whiteSpotLight.animations = lightAnimationArray
 
-      //Light direction is up and left
-        const light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 5, -8), scene);
-        light.diffuse = new BABYLON.Color3(0.1, 0.1, 0.09);
-        light.specular = new BABYLON.Color3(0, 0, 0);
-        light.groundColor = new BABYLON.Color3(1, 1, 1);
-        light.intensity = 1
+
 
 
         // FRONT PLANE
@@ -159,7 +164,15 @@ const PageWithScene = () => {
         planeCanvas.material = frontMaterial;
 
 
-        // BACK PLANE with TEXT
+      const backgroundSphere = BABYLON.MeshBuilder.CreateSphere("mySphere", {diameter: 100, diameterX: 100, sideOrientation: BABYLON.Mesh.BACKSIDE, arc: 0.5}, scene);
+      const backgroundSphereMaterial = new BABYLON.StandardMaterial("MatText", scene);
+      backgroundSphere.rotation.y = BABYLON.Tools.ToRadians(180);
+      backgroundSphereMaterial.ambientColor = new BABYLON.Color3(0.7, 0.7, 0.7);
+      backgroundSphereMaterial.diffuseColor = new BABYLON.Color3(0.1, 0.1, 0.1);
+
+      backgroundSphere.material = backgroundSphereMaterial
+
+      // BACK PLANE with TEXT
         const textCanvas = BABYLON.MeshBuilder.CreatePlane("planeCanvas",card, scene);
         textCanvas.position = cardPosition // move behind front
         const materialText = new BABYLON.StandardMaterial("MatText", scene);
@@ -214,8 +227,12 @@ const PageWithScene = () => {
 
         // cardLight.excludedMeshes.push(planeCanvas);
         // light.excludedMeshes.push(planeCanvas);
+      hemLight.excludedMeshes.push(backgroundSphere);
+      hemLight2.excludedMeshes.push(backgroundSphere);
+      // hemLight3.excludedMeshes.push(backgroundSphere);
 
-        // const dynamicTextTexture = new BABYLON.DynamicTexture("dynamic text texture", pixelCard, scene);
+
+      // const dynamicTextTexture = new BABYLON.DynamicTexture("dynamic text texture", pixelCard, scene);
         // materialText.diffuseTexture = dynamicTextTexture
         // let ctx = textCanvasService(dynamicTextTexture, window.innerWidth, window.innerHeight)
         // ctx = changingArtistNames(ctx, 0, window.innerWidth, window.innerHeight)
@@ -226,7 +243,7 @@ const PageWithScene = () => {
         // dynamicTextTexture.update();
         initalDone = true
 
-        return { frontMaterial, frontTexture, frontTextureContext,camera, smallCardPixel, textCanvas}
+        return { frontMaterial, frontTexture, frontTextureContext,camera, smallCardPixel, textCanvas, whiteSpotLight}
     }
 
 
@@ -238,11 +255,11 @@ const PageWithScene = () => {
         return pickinfo.pickedPoint;
     }
 
-
+    const isBack = true;
     const onSceneMount = (e) => {
         loadFonts()
         let { canvas, scene, engine } = e;
-        let { frontTexture, frontTextureContext, camera, dynamicTexture, smallCardPixel, textCanvas } = initialSetup(scene, canvas)
+        let { frontTexture, frontTextureContext, camera, dynamicTexture, smallCardPixel, textCanvas, whiteSpotLight } = initialSetup(scene, canvas)
         let lastHandPosition = handStartingPosition;
 
         scene.beginAnimation(camera, 0, 1200, true);
@@ -250,12 +267,22 @@ const PageWithScene = () => {
         const cardFlip = (scene) => {
           scene.beginDirectAnimation(textCanvas, [cardFlipRotationY, cardFlipRotationZ, cardFlipPosition], 0, 50, false);
         }
+      // const cardFlipBack = (scene) => {
+      //   scene.beginDirectAnimation(textCanvas, [cardFlipRotationY, cardFlipRotationZ, cardFlipPosition], 0, 50, false, -1);
+      //   // // change name
+      //   setInterval(() => {
+      //     if (isBack) {
+      //
+      //     }
+      //     scene.beginAnimation(textCanvas, [cardFlipRotationY, cardFlipRotationZ, cardFlipPosition], 0, 50, false);
+      //   }, 20000)
+      // }
 
       const startLightAnimation = (scene) => {
-        scene.beginDirectAnimation(textCanvas, [cardFlipRotationY, cardFlipRotationZ, cardFlipPosition], 0, 50, false);
+          console.log('started light animation')
+        scene.beginAnimation(whiteSpotLight, 0, 100000, true);
       }
 
-        // scene.debugLayer.show();
         const animateHand = (scene, current) => {
             // console.log(current);
             if ((current !== null) && firstRenderDone && assetsLoaded) {
@@ -275,8 +302,6 @@ const PageWithScene = () => {
                 lastHandPosition = aimedHandPosition
             }
         }
-        // hammerjs listens to mouse move
-        // Create an instance of Hammer with the reference.
 
         const touchmove = (ev) => {
             ev.preventDefault();
@@ -337,11 +362,14 @@ const PageWithScene = () => {
                     loadingCounter ++
                     if (loadingCounter === 4) {
                         setLoading(false)
+                        startLightAnimation(scene)
 
                       // changingNamesTimer = setAnimationTimer(smallTextAnimation(dynamicTexture, smallCardPixel))
                     } else if (loadingCounter > 4) {
                       console.log(movementCounter)
                       if (movementCounter > 110 && movementCounter < 120 )  {
+                        // scene.debugLayer.show();
+
                         console.log('REACHED LIMIT!')
                         cardFlip(scene)
                       }

@@ -87,29 +87,86 @@ const cardFlipPositionKeys = [
 const cardFlipPosition = new BABYLON.Animation("cardFlipPosition", "position.z", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
 
 
-const cameraAnimationFramerate = 50;
-const cameraAnimationXKeys = [
+const lightAnimationFramerate = 10000;
+const lightAnimationXKeys = [
   {
     frame: 0,
-    value: 3
+    value: -20
   },
   {
-    frame: cameraAnimationFramerate / 2,
+    frame: lightAnimationFramerate / 4,
+    value: -10
+  },
+  {
+    frame: (lightAnimationFramerate / 4) * 2,
+    value: 0
+  },
+  {
+    frame: (lightAnimationFramerate / 4) * 3,
     value: 10
   },
   {
-    frame: cameraAnimationFramerate,
-    value: 3
+    frame: lightAnimationFramerate,
+    value: 20
   }
 ];
-const cameraAnimationX = new BABYLON.Animation("cameraAnimationX", "position.x", cameraAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
-cameraAnimationX.setKeys(cameraAnimationXKeys);
+const lightAnimationYKeys = [
+  {
+    frame: 0,
+    value: -20
+  },
+  {
+    frame: lightAnimationFramerate / 4,
+    value: -10
+  },
+  {
+    frame: (lightAnimationFramerate / 4) * 2,
+    value: 0
+  },
+  {
+    frame: (lightAnimationFramerate / 4) * 3,
+    value: 10
+  },
+  {
+    frame: lightAnimationFramerate,
+    value: 20
+  }
+];
+const lightAnimationXRotationKeys = [
+  {
+    frame: 0,
+    value: Math.PI / 4
+  },
+  {
+    frame: lightAnimationFramerate / 4,
+    value: Math.PI / 2
+  },
+  {
+    frame: (lightAnimationFramerate / 4) * 2,
+    value: 0
+  },
+  {
+    frame: (lightAnimationFramerate / 4) * 3,
+    value: 0.1
+  },
+  {
+    frame: lightAnimationFramerate,
+    value: 0.2
+  }
+];
+const lightAnimationX = new BABYLON.Animation("lightAnimationX", "position.x", lightAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
+const lightAnimationY = new BABYLON.Animation("lightAnimationY", "position.y", lightAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
+const lightAnimationXRotation = new BABYLON.Animation("lightAnimationXRotation", "direction.x", lightAnimationFramerate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
+lightAnimationX.setKeys(lightAnimationXKeys);
+lightAnimationY.setKeys(lightAnimationYKeys);
+lightAnimationXRotation.setKeys(lightAnimationXRotationKeys);
 
 
+const lightAnimationArray = [lightAnimationX, lightAnimationY]
 
 cardFlipPosition.setKeys(cardFlipPositionKeys);
 
-export { cameraAnimationX, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition }
+export { lightAnimationArray, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition }
 
 export const handAnimationKeys = [
     {

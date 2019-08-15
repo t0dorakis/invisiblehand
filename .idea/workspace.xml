@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2953ba0-b1ba-44b2-9552-c5482525d5aa" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/textures/favoritDoubleSide-min.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/animationKeys.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/animationKeys.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/materialService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/materialService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/BabylonScene/paintService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BabylonScene/paintService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Imprint/Text.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Imprint/Text.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/variables.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +29,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Views/Home/index.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>false</service-enabled>
@@ -107,7 +105,9 @@
       <workItem from="1565606972115" duration="87000" />
       <workItem from="1565610861860" duration="643000" />
       <workItem from="1565639417598" duration="570000" />
-      <workItem from="1565698603157" duration="724000" />
+      <workItem from="1565698603157" duration="10215000" />
+      <workItem from="1565779492980" duration="612000" />
+      <workItem from="1565788968494" duration="3425000" />
     </task>
     <servers />
   </component>
