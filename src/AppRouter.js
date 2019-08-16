@@ -9,11 +9,11 @@ import './normalize.scss'
 import './variables.scss'
 const ActionBarLinks = [
     {
-        name: 'IMPRINT',
+        name: 'Imprint',
         url: 'Imprint'
     },
     {
-        name: 'DATA SECURITY',
+        name: 'Data Policy',
         url: 'DataSecurity'
     }
 ]

@@ -8,7 +8,7 @@ import LoadingScreen from './../../Components/LoadingScreen'
 import { textCanvasService, changingArtistNames, artistsList, loadFonts, smallTextAnimation } from './../../Components/BabylonScene/textCanvasService.js'
 import { Materials } from "../../Components/BabylonScene/materialService"
 import { paint } from '../../Components/BabylonScene/paintService'
-import { cameraAnimationKeys, handAnimationKeys, cameraPosition, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition, lightAnimationArray } from '../../Components/BabylonScene/animationKeys'
+import { cameraAnimationKeys, handAnimationKeys, cameraPosition, cardFlipRotation, cardFlipPosition, cardFlipBackRotation, lightAnimationArray } from '../../Components/BabylonScene/animationKeys'
 import { isTouchDevice } from '../../utils/isTouchDevice'
 import { chromeModifier } from '../../utils/chromeModifier'
 import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; // import the component above linking to file we just created.
@@ -19,11 +19,16 @@ const PageWithScene = () => {
     // const { state, dispatch } = useContext(Store);
     const [loading, setLoading] = useState(true);
 
+    // this variables are important for the flip mechanism
     let movementCounter = 0;
-
     const firstFlipMovementFrame = 250;
+    const backFlipMovementFrame = 500;
+    const waitDurationBeforeNextFlipTrigger = 1500;
+    let isBack = false;
+    let firstFlipReached = false
+    let flipAnimationIsRunning = false
 
-    let loadingComponentShown = true
+  let loadingComponentShown = true
     let assetsLoaded, initalDone, firstRenderDone, firstMountDone = false;
     let loadingCounter = 0;
     const isTouchDeviceCheck = isTouchDevice();
@@ -258,7 +263,6 @@ const PageWithScene = () => {
         return pickinfo.pickedPoint;
     }
 
-    const isBack = true;
     const onSceneMount = (e) => {
         loadFonts()
         let { canvas, scene, engine } = e;
@@ -267,19 +271,40 @@ const PageWithScene = () => {
 
         scene.beginAnimation(camera, 0, 1200, true);
 
-        const cardFlip = (scene) => {
-          scene.beginDirectAnimation(textCanvas, [cardFlipRotationY, cardFlipRotationZ, cardFlipPosition], 0, 50, false);
+        const cardFlip = async (scene) => {
+          if (!flipAnimationIsRunning) {
+            flipAnimationIsRunning = true
+            const animation = scene.beginDirectAnimation(textCanvas, [cardFlipRotation, cardFlipPosition], 0, 50, false);
+            firstFlipReached = true
+            await animation.waitAsync();
+            setTimeout(async () => {
+              isBack = true
+              flipAnimationIsRunning = false
+            }, waitDurationBeforeNextFlipTrigger);
+          }
         }
-      // const cardFlipBack = (scene) => {
-      //   scene.beginDirectAnimation(textCanvas, [cardFlipRotationY, cardFlipRotationZ, cardFlipPosition], 0, 50, false, -1);
-      //   // // change name
-      //   setInterval(() => {
-      //     if (isBack) {
-      //
-      //     }
-      //     scene.beginAnimation(textCanvas, [cardFlipRotationY, cardFlipRotationZ, cardFlipPosition], 0, 50, false);
-      //   }, 20000)
-      // }
+
+      const cardFlipBack = async (scene) => {
+        if (!flipAnimationIsRunning) {
+          flipAnimationIsRunning = true
+          const animation = scene.beginDirectAnimation(textCanvas, [cardFlipBackRotation, cardFlipPosition], 0, 50, false);
+          await animation.waitAsync();
+          setTimeout(async () => {
+            isBack = false
+            flipAnimationIsRunning = false
+          }, waitDurationBeforeNextFlipTrigger);
+        }
+      }
+
+      const activatetCardFlipFunction = (scene) => {
+          if(firstFlipReached) {
+            if(isBack) {
+              cardFlipBack(scene)
+            } else {
+              cardFlip(scene)
+            }
+          }
+      }
 
       const startLightAnimation = (scene) => {
           console.log('started light animation')
@@ -319,6 +344,7 @@ const PageWithScene = () => {
                 }
                 paint(frontTextureContext, frontTexture, cardOutside, pixelCard, current, isTouchDeviceCheck);
                 movementCounter++;
+                activatetCardFlipFunction(scene)
             }
         }
 
@@ -336,9 +362,11 @@ const PageWithScene = () => {
                     }
                     if (isTouchDeviceCheck) {
                         paint(frontTextureContext, frontTexture, cardOutside, pixelCard, current);
+                        activatetCardFlipFunction(scene)
                     } else if (ev.buttons > 0) {
                         paint(frontTextureContext, frontTexture, cardOutside, pixelCard, current);
-                        movementCounter++;
+                        activatetCardFlipFunction(scene)
+                      movementCounter++;
                     }
                 }
             }
@@ -371,11 +399,15 @@ const PageWithScene = () => {
                     } else if (loadingCounter > 4) {
                       // console.log(movementCounter)
                       console.log(engine.getFps().toFixed() + " fps");
-                      if (movementCounter > firstFlipMovementFrame && movementCounter < (firstFlipMovementFrame + 20))  {
+                      if (movementCounter > firstFlipMovementFrame && movementCounter < (firstFlipMovementFrame + 20)) {
                         // scene.debugLayer.show();
                         console.log('REACHED LIMIT!')
                         cardFlip(scene)
                       }
+                      // } else if (movementCounter > backFlipMovementFrame && movementCounter < (backFlipMovementFrame + 20)) {
+                      //   cardFlipBack(scene)
+                      //   console.log('FLIP BACK THRESHOLD')
+                      // }
                     }
                 }
                 firstRenderDone = true

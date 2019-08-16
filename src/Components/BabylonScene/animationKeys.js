@@ -37,38 +37,63 @@ export const cameraAnimationKeys = [
 ]
 
 const cardFlipFrameRate = 50;
-const cardFlipRotationYKeys = [
+const cardFlipBackRotationKeys = [
   {
     frame: 0,
-    value: 0
+    value: {
+      y: Math.PI,
+      x: 0,
+      z: Math.PI / 30
+    }
   },
   {
     frame: cardFlipFrameRate / 2,
-    value: Math.PI / 2
+    value: {
+      y: Math.PI / 2,
+      x: 0,
+      z: Math.PI / 15
+    }
   },
   {
     frame: cardFlipFrameRate,
-    value:  Math.PI
+    value: {
+      y: 0,
+      x: 0,
+      z: 0
+    }
   }
 ];
-const cardFlipRotationY = new BABYLON.Animation("cardFlipRotationY", "rotation.y", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
-cardFlipRotationY.setKeys(cardFlipRotationYKeys);
-const cardFlipRotationZKeys = [
+const cardFlipRotationKeys = [
   {
     frame: 0,
-    value: 0
+    value: {
+      y: 0,
+      x: 0,
+      z: 0
+    }
   },
   {
     frame: cardFlipFrameRate / 2,
-    value: Math.PI / 15
+    value: {
+      y: Math.PI / 2,
+      x: 0,
+      z: Math.PI / 15
+    }
   },
   {
     frame: cardFlipFrameRate,
-    value: Math.PI / 30
-  }
+    value: {
+      y: Math.PI,
+      x: 0,
+      z: Math.PI / 30
+    }
+  },
 ];
-const cardFlipRotationZ = new BABYLON.Animation("cardFlipRotationY", "rotation.z", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
-cardFlipRotationZ.setKeys(cardFlipRotationZKeys);
+
+const cardFlipRotation = new BABYLON.Animation("cardFlipRotation", "rotation", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_VECTOR3)
+cardFlipRotation.setKeys(cardFlipRotationKeys);
+const cardFlipBackRotation = new BABYLON.Animation("cardFlipBackRotation", "rotation", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_VECTOR3)
+cardFlipBackRotation.setKeys(cardFlipBackRotationKeys);
 
 const cardFlipPositionKeys = [
   {
@@ -84,6 +109,7 @@ const cardFlipPositionKeys = [
     value: 3
   }
 ];
+
 const cardFlipPosition = new BABYLON.Animation("cardFlipPosition", "position.z", cardFlipFrameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT)
 
 
@@ -113,7 +139,7 @@ const lightAnimationArray = [lightAnimationPosition]
 
 cardFlipPosition.setKeys(cardFlipPositionKeys);
 
-export { lightAnimationArray, cardFlipRotationY, cardFlipRotationZ, cardFlipPosition }
+export { lightAnimationArray, cardFlipRotation, cardFlipPosition, cardFlipBackRotation }
 
 export const handAnimationKeys = [
     {

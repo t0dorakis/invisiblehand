@@ -51,7 +51,8 @@ const ActionBar = (props) => {
             <div className="button-box">
                 <div className="circle scale-on-hover">
                     <a href="mailto:handshake@invisiblehand.agency">
-                        <div className="logo" />
+                        {/*<div className="logo" />*/}
+                        Handshake
                     </a>
                 </div>
             </div>

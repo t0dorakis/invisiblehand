@@ -11,8 +11,7 @@ a {
   color: $black;
 }
 .action-bar {
-  text-transform: lowercase;
-
+  text-transform: capitalize;
   position: fixed;
   bottom: 0;
   z-index: 9;
@@ -23,6 +22,7 @@ a {
   width: 100%;
 
   &--menu-list {
+
     margin: 0;
     padding-inline-start: 0;
     list-style: none;
@@ -30,7 +30,8 @@ a {
     justify-content: space-between;
     &--item {
       padding-left: 20px;
-      padding-bottom: 20px;
+      padding-right: 5px;
+      padding-bottom: 28px;
       a {
         color: $black;
         text-decoration: none;
@@ -96,7 +97,7 @@ a {
     }
   }
   .circle {
-    background-color: $beige;
+    background-color: $background;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,7 +113,7 @@ a {
       bottom: 20px;
       width: 60px;
       height: 60px;
-      background-color: $beige;
+      background-color: lighten($background, 0.5);
       border-radius: 60px;
       z-index: -999;
       transition: height 0.1s ease;
@@ -170,5 +171,8 @@ a {
   }
   .hide-on-mobile {
     display: flex;
+  }
+  .action-bar--menu-list--item {
+    padding-bottom: 38px;
   }
 }
