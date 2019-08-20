@@ -16,21 +16,24 @@ const ActionBar = (props) => {
     })
 
     const singlePageMenu = () => (
-      <div className="single-page-bar">
+      <div className="single-page-bar--wrapper">
+        <div className="single-page-bar">
           <Link to="/">
             <div className="button-box">
-              <div className="circle">
+              <div className="scale-on-hover">
                 BACK
               </div>
             </div>
           </Link>
 
-        <div className="button-box">
-            <div className="circle scale-on-hover">
+          <div className="button-box">
+            <div className="scale-on-hover">
               <a href="mailto:handshake@invisiblehand.agency">
-                <div className="logo"/>
+                {/*<div className="logo"/>*/}
+                CONTACT
               </a>
             </div>
+          </div>
         </div>
       </div>
     )

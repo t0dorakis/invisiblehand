@@ -16,7 +16,6 @@ import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; //
 import textCanvasTexture from '../../assets/textures/favoritDoubleSide-min.jpg'
 
 const PageWithScene = () => {
-    // const { state, dispatch } = useContext(Store);
     const [loading, setLoading] = useState(true);
 
     // this variables are important for the flip mechanism
@@ -101,60 +100,21 @@ const PageWithScene = () => {
         })
 
         // // LIGHT
-        // const pointLight = new BABYLON.PointLight("light", new BABYLON.Vector3(9, 50, -20), scene);
-        // // pointLight.direction = new BABYLON.Vector3(10,10,999);
-        // pointLight.intensity = 10
-        // pointLight.diffuse = new BABYLON.Color3(0.9, 1, 1);
-        // pointLight.specular = new BABYLON.Color3(1, 1, 1);
-        //
-      //   const cardLight = new BABYLON.DirectionalLight("cardLight", new BABYLON.Vector3(-1, -0.7, 1.5), scene);
-      // cardLight.intensity = 2
-      // cardLight.diffuse = new BABYLON.Color3(0.6, 0.5, 0.3);
-      // cardLight.specular = new BABYLON.Color3(0.8, 0.4, 0.2);
-      // cardLight.groundColor = new BABYLON.Color3(0.8, 0.4, 0.2);
-      // const cardLightPassive = new BABYLON.DirectionalLight("cardLight", new BABYLON.Vector3(0, 1, -0.5), scene);
-      // cardLightPassive.intensity = 0.5
-      // cardLightPassive.diffuse = new BABYLON.Color3(0.6, 0.5, 0.3);
-      // cardLightPassive.specular = new BABYLON.Color3(1, 1, 1);
-      // cardLightPassive.groundColor = new BABYLON.Color3(1, 1, 1);
-
-
-      // const pointLight2 = new BABYLON.PointLight("light", new BABYLON.Vector3(60, 60, -400), scene);
-      // const pointLight2 = new BABYLON.PointLight("light", new BABYLON.Vector3(60, 60, -400), scene);
-        // pointLight.direction = new BABYLON.Vector3(10,10,999);
-        // pointLight2.intensity = 0
-        // pointLight2.diffuse = new BABYLON.Color3(0.6, 0.5, 0.3);
-        // pointLight2.specular = new BABYLON.Color3(0.8, 0.4, 0.2);
-      // pointLight2.diffuse = new BABYLON.Color3(0.6, 0.5, 0.3);
-      // pointLight2.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
 
       const hemLight = new BABYLON.HemisphericLight("hemiLight1", new BABYLON.Vector3(0, 1, -1), scene);
       hemLight.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
       hemLight.groundColor = new BABYLON.Color3(1, 1, 1);
       hemLight.intensity = 2
-      //
-      // const hemLight3 = new BABYLON.HemisphericLight("hemiLight2", new BABYLON.Vector3(-1, .2, -1), scene);
-      // hemLight3.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
-      // hemLight3.groundColor = new BABYLON.Color3(1, 1, 1);
-      // hemLight3.intensity = 0
-      //
-      // const Hemilight4 = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 5, -8), scene);
-      // Hemilight4.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
-      // Hemilight4.groundColor = new BABYLON.Color3(1, 1, 1);
-      // Hemilight4.intensity = 1
-      //
+
       const hemLight2 = new BABYLON.HemisphericLight("hemiLight3", new BABYLON.Vector3(0, -1, -1), scene);
       hemLight2.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
       hemLight2.groundColor = new BABYLON.Color3(1, 1, 1);
       hemLight2.intensity = 2
 
-
-
-
-      const spotLight = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(0, 7, -20), new BABYLON.Vector3(0, 0, 0.7), Math.PI / 2, 50, scene);
+      const spotLight = new BABYLON.SpotLight("blueSpotLight", new BABYLON.Vector3(0, 7, -20), new BABYLON.Vector3(0, 0, 0.7), Math.PI / 2, 50, scene);
       spotLight.specular = new BABYLON.Color3(0.3, 0.4, 1);
       spotLight.groundColor = new BABYLON.Color3(1, 1, 1);
-      spotLight.intensity = 0.2
+      spotLight.intensity = 0.3
 
       const whiteSpotLight = new BABYLON.SpotLight("whiteSpotLight", new BABYLON.Vector3(0, 3, -20), new BABYLON.Vector3(-0.1, 0.3, 0.7), Math.PI / 2, 10, scene);
       whiteSpotLight.specular = new BABYLON.Color3(0.8, 0.8, 0.82);
@@ -163,14 +123,10 @@ const PageWithScene = () => {
       whiteSpotLight.intensity = 1
       whiteSpotLight.animations = lightAnimationArray
 
-
-
-
         // FRONT PLANE
         const planeCanvas = BABYLON.MeshBuilder.CreatePlane("planeCanvas",cardOutside, scene);
         const { frontMaterial, texture: frontTexture, frontTextureContext }  = Materials.getGroundMaterial(scene, hand, pixelCard)
         planeCanvas.material = frontMaterial;
-
 
       const backgroundSphere = BABYLON.MeshBuilder.CreateSphere("mySphere", {diameter: 100, diameterX: 100, sideOrientation: BABYLON.Mesh.BACKSIDE, arc: 0.5}, scene);
       const backgroundSphereMaterial = new BABYLON.StandardMaterial("MatText", scene);
@@ -188,7 +144,6 @@ const PageWithScene = () => {
         materialText.diffuseColor = new BABYLON.Color3(0.18, 0.18, 0.18);
         textCanvas.material = materialText;
         materialText.diffuseTexture = new BABYLON.Texture(textCanvasTexture, scene);
-      // textCanvas.visibility = 0
 
         // small animation text plane
       const smallCard = {
@@ -200,14 +155,6 @@ const PageWithScene = () => {
         height: smallCard.height *60
       }
 
-      // const animationTextCanvas = BABYLON.MeshBuilder.CreatePlane("animationTextCanvas",smallCard, scene);
-      // animationTextCanvas.position.z = 2.9 // move behind front
-      // animationTextCanvas.position.y = -1.88 // move behind front
-
-      // const dynamicTexture = new BABYLON.DynamicTexture('dynamicTexture', smallCardPixel, scene);
-      // smallTextAnimation(dynamicTexture, smallCardPixel)
-      //Check width of text for given font type at any size of font
-
 
       const animationTextMaterial = new BABYLON.StandardMaterial("Mat", scene);
       // animationTextMaterial.diffuseColor = new BABYLON.Color3(1, 1, 1);
@@ -215,13 +162,6 @@ const PageWithScene = () => {
       animationTextMaterial.diffuseColor = new BABYLON.Color3(1, 1, 1);
       // animationTextMaterial.diffuseTexture = dynamicTexture;
       // animationTextCanvas.material = animationTextMaterial;
-      // dynamicTexture.drawText('DETTMANN', 20, 20, 'bold 300px aktiv-grotesk', 'black', 'white', true, true);
-
-
-        // Plane behind everything (needed for skybox effect)
-        // const worldPlane = BABYLON.MeshBuilder.CreatePlane("worldCanvas",{width: 1000, height:1000}, scene);
-        // worldPlane.position.z = 4 // move behind front
-
 
         // CAMERA
         camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
@@ -232,25 +172,12 @@ const PageWithScene = () => {
         camera.position = cameraPosition
         camera.animations = [cameraAnimation]
 
-        // cardLight.excludedMeshes.push(planeCanvas);
-        // light.excludedMeshes.push(planeCanvas);
       hemLight.excludedMeshes.push(backgroundSphere);
       hemLight2.excludedMeshes.push(backgroundSphere);
-      // hemLight3.excludedMeshes.push(backgroundSphere);
 
+      initalDone = true
 
-      // const dynamicTextTexture = new BABYLON.DynamicTexture("dynamic text texture", pixelCard, scene);
-        // materialText.diffuseTexture = dynamicTextTexture
-        // let ctx = textCanvasService(dynamicTextTexture, window.innerWidth, window.innerHeight)
-        // ctx = changingArtistNames(ctx, 0, window.innerWidth, window.innerHeight)
-        // artistsList.forEach((name, index) => {
-        //     ctx = changingArtistNames(ctx, index, window.innerWidth, window.innerHeight)
-        // })
-
-        // dynamicTextTexture.update();
-        initalDone = true
-
-        return { frontMaterial, frontTexture, frontTextureContext,camera, smallCardPixel, textCanvas, whiteSpotLight}
+      return { frontMaterial, frontTexture, frontTextureContext,camera, smallCardPixel, textCanvas, whiteSpotLight}
     }
 
 
@@ -379,11 +306,6 @@ const PageWithScene = () => {
         document.addEventListener( "pointermove", pointermove)
         firstMountDone = true
 
-      // // change name
-      // setInterval(() => {
-      //   smallTextAnimation(dynamicTexture, smallCardPixel)
-      // }, 2000)
-
         engine.runRenderLoop(() => {
             if (scene) {
                 scene.render();
@@ -392,24 +314,15 @@ const PageWithScene = () => {
                     if (loadingCounter === 4) {
                         setLoading(false)
                         startLightAnimation(scene)
-
-                      // changingNamesTimer = setAnimationTimer(smallTextAnimation(dynamicTexture, smallCardPixel))
                     } else if (loadingCounter > 4) {
-                      // console.log(movementCounter)
+                      // show fps in console
                       // console.log(engine.getFps().toFixed() + " fps");
                       if (movementCounter > firstFlipMovementFrame && movementCounter < (firstFlipMovementFrame + 20)) {
-                        // scene.debugLayer.show();
-                        // console.log('REACHED LIMIT!')
                         cardFlip(scene)
                       }
-                      // } else if (movementCounter > backFlipMovementFrame && movementCounter < (backFlipMovementFrame + 20)) {
-                      //   cardFlipBack(scene)
-                      //   console.log('FLIP BACK THRESHOLD')
-                      // }
                     }
                 }
                 firstRenderDone = true
-                // waitBeforeHideLoading()
             }
         });
     };
