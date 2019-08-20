@@ -225,7 +225,6 @@ const PageWithScene = () => {
 
         // CAMERA
         camera = new BABYLON.ArcRotateCamera("Camera", BABYLON.Tools.ToRadians(-90), BABYLON.Tools.ToRadians(90), 25, BABYLON.Vector3.Zero(), scene);
-        console.log(isTouchDevice)
         if (isTouchDevice()) {
           camera.attachControl(canvas, false);
         }
@@ -260,7 +259,6 @@ const PageWithScene = () => {
     const getGroundPosition = (scene) => {
         // Use a predicate to get position on the ground
         const pickinfo = scene.pick(scene.pointerX, scene.pointerY);
-        console.log(scene.pointerX, scene.pointerY)
         return pickinfo.pickedPoint;
     }
 
@@ -308,7 +306,6 @@ const PageWithScene = () => {
       }
 
       const startLightAnimation = (scene) => {
-          console.log('started light animation')
         scene.beginAnimation(whiteSpotLight, 0, 100000, true, 0.01);
       }
 
@@ -336,7 +333,6 @@ const PageWithScene = () => {
             ev.preventDefault();
             const x = ev.touches[0].clientX
             const y = ev.touches[0].clientY
-            console.log(ev.touches[0].clientY)
             const current = getGroundPosition(scene);
             if ((current !== null) && firstRenderDone && assetsLoaded) {
                 animateHand(scene, current)
@@ -353,8 +349,6 @@ const PageWithScene = () => {
 
         const pointermove = (ev) => {
           ev.preventDefault();
-          console.log(ev.clientY)
-
           const x = ev.clientX
                 const y = ev.clientY
                 const current = getGroundPosition(scene);
@@ -405,7 +399,7 @@ const PageWithScene = () => {
                       // console.log(engine.getFps().toFixed() + " fps");
                       if (movementCounter > firstFlipMovementFrame && movementCounter < (firstFlipMovementFrame + 20)) {
                         // scene.debugLayer.show();
-                        console.log('REACHED LIMIT!')
+                        // console.log('REACHED LIMIT!')
                         cardFlip(scene)
                       }
                       // } else if (movementCounter > backFlipMovementFrame && movementCounter < (backFlipMovementFrame + 20)) {
