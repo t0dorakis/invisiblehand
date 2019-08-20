@@ -15,49 +15,40 @@ const ActionBar = (props) => {
         return <li className="action-bar--menu-list--item" key={link.name}><Link to={`/${link.url}`}>{link.name}</Link></li>;
     })
 
-    return (
-        <div className="action-bar">
-            {!checkIfHome ? (
-              <Link to="/">
-                <div className="button-box">
-                    <div className="circle">
-                        BACK
-                    </div>
-                  </div>
-              </Link>
-            ) : (
-              <div className="hide-on-desktop">
-                <div className="button-box">
-                  <div className="circle">
-                    <Burger isActive={true}></Burger>
-                    <div className="animation-bar" style={mobileMenuOpen ? { height: 275 + "px" } : { height: 60+ "px"}}></div>
-                  </div>
-                </div>
-                {
-                  mobileMenuOpen &&
-                  <div className="mobile-menu">
-                    <ul className="action-bar--mobile-menu mobile-extra-margin">
-                      {menuList}
-                    </ul>
-                  </div>
-                }
-              </div>
-            )}
-          { checkIfHome &&
-            <ul className="action-bar--menu-list hide-on-mobile">
-              {menuList}
-            </ul>
-          }
+    const singlePageMenu = () => (
+      <div className="single-page-bar">
+          <Link to="/">
             <div className="button-box">
-                <div className="circle scale-on-hover">
-                    <a href="mailto:handshake@invisiblehand.agency">
-                        {/*<div className="logo" />*/}
-                        Handshake
-                    </a>
-                </div>
+              <div className="circle">
+                BACK
+              </div>
+            </div>
+          </Link>
+
+        <div className="button-box">
+            <div className="circle scale-on-hover">
+              <a href="mailto:handshake@invisiblehand.agency">
+                <div className="logo"/>
+              </a>
             </div>
         </div>
+      </div>
     )
+
+    const frontPageMenu = () => (
+      <div className="action-bar">
+        <div className="button-box">
+            <div className="button scale-on-hover">
+              <a href="mailto:handshake@invisiblehand.agency">
+                Handshake
+              </a>
+            </div>
+        </div>
+      </div>
+    )
+
+    return checkIfHome ? frontPageMenu() : singlePageMenu()
+
 }
 
 export default withRouter(ActionBar)

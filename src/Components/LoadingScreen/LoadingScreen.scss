@@ -15,6 +15,12 @@
   color: $beige;
   &--text {
     animation: blink-animation 1s steps(5, start) infinite;
+    .logo {
+      width: 45px;
+      height: 42px;
+      margin-top: 3px;
+      background: url(../../assets/icons/handshake.svg) no-repeat center;
+    }
   }
 }
 

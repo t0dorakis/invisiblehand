@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2953ba0-b1ba-44b2-9552-c5482525d5aa" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Header/Header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Header/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/LoadingScreen/LoadingScreen.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoadingScreen/LoadingScreen.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/LoadingScreen/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoadingScreen/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Imprint/Text.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Imprint/Text.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/textures/favoritDoubleSide-min.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/textures/favoritDoubleSide-min.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/variables.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +54,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/fonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
@@ -56,19 +64,19 @@
     <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/fonts" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/assets/maps" />
-      <recent name="$PROJECT_DIR$/src/Views/Imprint" />
-      <recent name="$PROJECT_DIR$/src/Views/Terms" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/textures" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/src/Components/BabylonScene" />
       <recent name="$PROJECT_DIR$/src/Views/Home" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components" />
+      <recent name="$PROJECT_DIR$/src/assets/fonts" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/assets/maps" />
+      <recent name="$PROJECT_DIR$/src/Views/Imprint" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -107,7 +115,7 @@
       <workItem from="1565698603157" duration="10215000" />
       <workItem from="1565779492980" duration="612000" />
       <workItem from="1565788968494" duration="22101000" />
-      <workItem from="1566234208046" duration="1669000" />
+      <workItem from="1566234208046" duration="10663000" />
     </task>
     <servers />
   </component>

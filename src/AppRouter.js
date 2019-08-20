@@ -5,6 +5,7 @@ import Terms from './Views/Terms'
 import DataSecurity from './Views/DataSecurity'
 import Imprint from './Views/Imprint'
 import ActionBar from './Components/ActionBar'
+import Header from './Components/Header'
 import './normalize.scss'
 import './variables.scss'
 const ActionBarLinks = [
@@ -21,7 +22,8 @@ const ActionBarLinks = [
 function AppRouter() {
     return (
         <BrowserRouter>
-            <div className="App">
+          <Header links={ActionBarLinks} />
+          <div className="App">
                 <Route path="/" exact component={Home} />
                 <Route path="/Home" component={Home} />
                 <Route path="/Imprint" component={Imprint} />
