@@ -5,8 +5,8 @@
       <change afterPath="$PROJECT_DIR$/src/Components/Header/Header.scss" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Components/Header/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/ActionBar.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ActionBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ActionBar/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/LoadingScreen/LoadingScreen.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoadingScreen/LoadingScreen.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/LoadingScreen/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoadingScreen/index.js" afterDir="false" />
@@ -115,7 +115,7 @@
       <workItem from="1565698603157" duration="10215000" />
       <workItem from="1565779492980" duration="612000" />
       <workItem from="1565788968494" duration="22101000" />
-      <workItem from="1566234208046" duration="13730000" />
+      <workItem from="1566234208046" duration="14224000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Bold WebGl landingpage
+
+Designed and Developed this playful page with the corresponding business cards
+
+[see in action](https://www.invisiblehand.agency).
+
+
+
+Heavy use of the amazing [BabylonJs](https://github.com/BabylonJS/Babylon.js)
+
+bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
