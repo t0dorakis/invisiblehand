@@ -21,7 +21,7 @@ const PageWithScene = () => {
 
     // this variables are important for the flip mechanism
     let movementCounter = 0;
-    const firstFlipMovementFrame = 250;
+    const firstFlipMovementFrame = 200;
     const backFlipMovementFrame = 500;
     const waitDurationBeforeNextFlipTrigger = 1500;
     let isBack = false;
@@ -260,6 +260,7 @@ const PageWithScene = () => {
     const getGroundPosition = (scene) => {
         // Use a predicate to get position on the ground
         const pickinfo = scene.pick(scene.pointerX, scene.pointerY);
+        console.log(scene.pointerX, scene.pointerY)
         return pickinfo.pickedPoint;
     }
 
@@ -272,7 +273,7 @@ const PageWithScene = () => {
         scene.beginAnimation(camera, 0, 1200, true);
 
         const cardFlip = async (scene) => {
-          if (!flipAnimationIsRunning) {
+          if (!flipAnimationIsRunning && !isBack) {
             flipAnimationIsRunning = true
             const animation = scene.beginDirectAnimation(textCanvas, [cardFlipRotation, cardFlipPosition], 0, 50, false);
             firstFlipReached = true
@@ -285,7 +286,7 @@ const PageWithScene = () => {
         }
 
       const cardFlipBack = async (scene) => {
-        if (!flipAnimationIsRunning) {
+        if (!flipAnimationIsRunning && isBack) {
           flipAnimationIsRunning = true
           const animation = scene.beginDirectAnimation(textCanvas, [cardFlipBackRotation, cardFlipPosition], 0, 50, false);
           await animation.waitAsync();
@@ -335,6 +336,7 @@ const PageWithScene = () => {
             ev.preventDefault();
             const x = ev.touches[0].clientX
             const y = ev.touches[0].clientY
+            console.log(ev.touches[0].clientY)
             const current = getGroundPosition(scene);
             if ((current !== null) && firstRenderDone && assetsLoaded) {
                 animateHand(scene, current)
@@ -351,7 +353,9 @@ const PageWithScene = () => {
 
         const pointermove = (ev) => {
           ev.preventDefault();
-                const x = ev.clientX
+          console.log(ev.clientY)
+
+          const x = ev.clientX
                 const y = ev.clientY
                 const current = getGroundPosition(scene);
                 if ((current !== null) && firstRenderDone && assetsLoaded) {
@@ -373,12 +377,12 @@ const PageWithScene = () => {
 
 
         let firstTouch = true;
-         canvas.addEventListener('mousemove', ev => {
+        document.addEventListener('mousemove', ev => {
              const current = getGroundPosition(scene);
              animateHand(scene, current)
          })
-        canvas.addEventListener('touchmove', touchmove, false);
-        canvas.addEventListener( "pointermove", pointermove)
+        document.addEventListener('touchmove', touchmove, false);
+        document.addEventListener( "pointermove", pointermove)
         firstMountDone = true
 
       // // change name
@@ -398,7 +402,7 @@ const PageWithScene = () => {
                       // changingNamesTimer = setAnimationTimer(smallTextAnimation(dynamicTexture, smallCardPixel))
                     } else if (loadingCounter > 4) {
                       // console.log(movementCounter)
-                      console.log(engine.getFps().toFixed() + " fps");
+                      // console.log(engine.getFps().toFixed() + " fps");
                       if (movementCounter > firstFlipMovementFrame && movementCounter < (firstFlipMovementFrame + 20)) {
                         // scene.debugLayer.show();
                         console.log('REACHED LIMIT!')
