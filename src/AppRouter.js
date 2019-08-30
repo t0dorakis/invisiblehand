@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 import Home from './Views/Home'
 import Terms from './Views/Terms'
 import DataSecurity from './Views/DataSecurity'
+import WeAreHiring from './Views/WeAreHiring'
 import Imprint from './Views/Imprint'
 import ActionBar from './Components/ActionBar'
 import Header from './Components/Header'
@@ -21,7 +22,7 @@ const ActionBarLinks = [
 
 function AppRouter() {
     return (
-        <BrowserRouter>
+        <HashRouter>
           <Header links={ActionBarLinks} />
           <div className="App">
                 <Route path="/" exact component={Home} />
@@ -30,11 +31,14 @@ function AppRouter() {
                 <Route path="/Impressum" component={Imprint} />
                 <Route path="/Datenschutz" component={DataSecurity} />
                 <Route path="/DataSecurity" component={DataSecurity} />
+                <Route path="/wearehiring" component={WeAreHiring} />
+                <Route path="/job" component={WeAreHiring} />
+                <Route path="/jobs" component={WeAreHiring} />
                 <Route path="/Terms" component={Terms} />
                 <Route path="/AGB" component={Terms} />
             </div>
             <ActionBar links={ActionBarLinks} />
-        </BrowserRouter>
+        </HashRouter>
   );
 }
 

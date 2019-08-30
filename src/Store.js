@@ -6,11 +6,14 @@ const initialState = {
     fingerPosition: {x: 0, y: 0},
     fingerIsTouching: false,
     loadingDone: false,
-    mobileMenuOpen: false
+    mobileMenuOpen: false,
+    showContactButton: false
 }
 
 function reducer(state, action) {
     switch (action.type) {
+        case 'SHOW_CONTACT_BUTTON':
+            return { ...state, showContactButton: true}
         case 'SET_FINGER_POSITION':
             return { ...state, fingerPosition: action.payload };
         case 'FINGER_STARTS_TOUCHING':

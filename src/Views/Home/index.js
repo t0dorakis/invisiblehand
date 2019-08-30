@@ -16,8 +16,10 @@ import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; //
 import textCanvasTexture from '../../assets/textures/favoritDoubleSide-min.jpg'
 
 const PageWithScene = () => {
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
+  const { state, dispatch } = useContext(Store);
 
+  const loading = !state.loadingDone
     // this variables are important for the flip mechanism
     let movementCounter = 0;
     const firstFlipMovementFrame = 200;
@@ -312,7 +314,8 @@ const PageWithScene = () => {
                 if (assetsLoaded && initalDone && firstRenderDone && firstMountDone) {
                     loadingCounter ++
                     if (loadingCounter === 4) {
-                        setLoading(false)
+                        dispatch({type: "SET_BABYLON_LOADING_DONE"})
+                        // setLoading(false)
                         startLightAnimation(scene)
                     } else if (loadingCounter > 4) {
                       // show fps in console

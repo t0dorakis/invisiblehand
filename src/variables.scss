@@ -24,4 +24,5 @@ $black: #191922;
 $beige: #fffaf7;
 $white: #fff;
 $background: #f3f3f3;
-$darkGray: #454549
+$darkGray: #454549;
+$lightGray: lighten($darkGray, 32)

@@ -2,9 +2,15 @@ import React from 'react';
 
 const Text = () => (
     <article>
-    <h3>Datenschutz</h3>
+    <h3>Privacy Information</h3>
     <p>
-        Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.  Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.  Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
+      Invisible Hand GbR, Urbanstr. 115, 10967 Berlin <i>(hereinafter “we”, “us” and “our”)</i> runs this website and therefore processes personal data pursuant to the EU General Data Protection Regulation (<i>“GDPR”</i>). You may reach out to us by writing a letter to the aforementioned address or via e-mail: <a
+      href="mailto:handshake@invisiblehand.agency" className="underlined-link">handshake@invisiblehand.agency </a>
+      Where we use the term “data”, we are referring to personal data within the meaning of the GDPR.
+    </p>
+      <h5>Server protocol data</h5>
+      <p>
+      Our web server processes a series of data for each request, which your browser automatically transmits to our web server. This data comprises the IP address currently assigned to your device, the date and time of the request, the time zone, the specific page or file called up, the http status code and the amount of data transferred. Additionally, the website from which your request came, the browser used, the operating system of your end device and the set language. The web server uses this data to display the contents of this website in the best possible way on your device.
     </p>
 </article>);
 
