@@ -2,7 +2,7 @@ import React from 'react';
 
 const Text = () => (
     <article>
-    <h3>Job Offer</h3>
+    <h3>Looking for a trainee</h3>
     <p>
       Invisible Hand is a newly founded artist and label consultancy.
       We are looking for a trainee in our Berlin office to assist in the day-to-day operations.

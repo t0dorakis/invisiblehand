@@ -9,7 +9,7 @@
   background-color: $background;
   min-height: 100vh;
   overflow-x: auto;
-  h3 {
+  h3, h4 {
     @include bold-font;
   }
   p {
