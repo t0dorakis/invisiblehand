@@ -15,7 +15,7 @@ const Text = () => (
       <p>
 
             {/*<span className="small">Tel.:</span>*/}
-        +49 (0) 157 316 613 19 <br />
+        <a href="tel:+4915731661319">+49 (0) 157 316 613 19</a><br />
         {/*<span className="small">E-Mail:</span>*/}
         <a className="underlined-link" href="mailto:handshake@invisiblehand.agency">handshake@invisiblehand.agency</a> <br />
       </p>

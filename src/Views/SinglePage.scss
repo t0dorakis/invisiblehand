@@ -1,6 +1,8 @@
 @import '../variables';
-
 .single-page {
+  ::selection {
+    background-color: lighten($lightGray, 30%);
+  }
   hyphens: auto;
   @include normal-font;
   display: flex;
@@ -18,6 +20,11 @@
   h5 {
     margin-block-end: 0px;
     @include bold-font;
+  }
+  ul {
+    margin: 0;
+    margin-block-start: 0;
+    padding-inline-start: 20px;
   }
   a {
     color: $black;
