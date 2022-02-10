@@ -8,7 +8,7 @@
     "babylonjs-loaders": "^4.0.3",
     "babylonjs-materials": "^4.0.3",
     "hammerjs": "^2.0.8",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "pepjs": "^0.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
