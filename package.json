@@ -8,17 +8,15 @@
     "babylonjs-loaders": "^4.0.3",
     "babylonjs-materials": "^4.0.3",
     "hammerjs": "^2.0.8",
-    "node-sass": "^4.12.0",
     "pepjs": "^0.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-addons-css-transition-group": "^15.6.2",
     "react-babylonjs": "^1.0.3",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "react-transition-group": "^4.2.1",
-    "sass-loader": "^7.1.0"
+    "react-scripts": "^5.0.1",
+    "react-transition-group": "^4.4.5",
+    "sass-loader": "^13.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.55.0"
   }
 }
