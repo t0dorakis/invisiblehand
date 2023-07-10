@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Text = () => (
   <article>
@@ -7,9 +7,9 @@ const Text = () => (
       <strong> Angaben gemäß § 5 TMG</strong>
     </p>
     <p>
-      Invisible Hand GbR <br />
-      Urbanstr. 115 <br />
-      10967 Berlin
+      Invisible Hand GmbH i.G. <br />
+      Reichenberger Straße 29 <br />
+      10999 Berlin <br />
     </p>
     <p>
       Vertreten durch Claudio Banti <br />
