@@ -5,7 +5,7 @@ const Text = () => (
     <h3>Privacy Information</h3>
 
     <p>
-      Invisible Hand GmbH i.G., Reichenberger Straße 29, 10999 Berlin{" "}
+      Invisible Hand GmbH i.G., Reichenberger Straße 29, 10999 Berlin -D{" "}
       <i>(hereinafter “we”, “us” and “our”)</i> runs this website and therefore
       processes personal data pursuant to the EU General Data Protection
       Regulation (<i>“GDPR”</i>). You may reach out to us by writing a letter to

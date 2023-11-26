@@ -27,7 +27,7 @@ import { isTouchDevice } from "../../utils/isTouchDevice";
 import { chromeModifier } from "../../utils/chromeModifier";
 import BabylonScene, { SceneEventArgs } from "../../Components/BabylonScene"; // import the component above linking to file we just created.
 
-import textCanvasTexture from "../../assets/textures/favoritdoubleside_Q2_2023.png";
+import textCanvasTexture from "../../assets/textures/favoritdoubleside_Q4_2023.png";
 
 const PageWithScene = () => {
   // const [loading, setLoading] = useState(true);

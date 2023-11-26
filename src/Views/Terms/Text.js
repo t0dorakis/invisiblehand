@@ -9,20 +9,21 @@ const Text = () => (
     <p>
       Invisible Hand GmbH i.G. <br />
       Reichenberger Straße 29 <br />
-      10999 Berlin <br />
+      10999 Berlin - D <br />
     </p>
     <p>
-      Vertreten durch Claudio Banti <br />
+      
+      Vertreten durch Claudio Piero Banti <br />
       Tel.: +49 157 31661319 <br />
       E-Mail: contact@invisiblehand.agency <br />
     </p>
-    <p>
+    {/* <p>
       <h5>Umsatzsteuer-ID:</h5>
       <p>
         Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: DE
         St.-Nr.
       </p>
-    </p>
+    </p> */}
     <h5>Webdesign:</h5>
     <p>
       <a href="http://www.200kilo.com">200Kilo</a>

@@ -9,8 +9,11 @@ const Text = () => (
     <p>
       Invisible Hand GmbH i.G. <br />
       Reichenberger Straße 29 <br />
-      10999 Berlin <br />
-      vertreten durch Claudio Banti
+      10999 Berlin - D <br /><br />
+
+      Geschäftsführer: Claudio Piero Banti <br />
+      Handelsregisternummer: HRB 254195 <br />
+      Aktenzeichen: ZENA-1137-2302595 <br />
     </p>
     <p>
       {/*<span className="small">Tel.:</span>*/}
