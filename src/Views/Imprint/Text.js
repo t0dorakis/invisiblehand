@@ -7,9 +7,9 @@ const Text = () => (
       <span className="muted">Angaben gemäß § 5 TMG</span>
     </p>
     <p>
-      Invisible Hand GmbH i.G. <br />
-      Reichenberger Straße 29 <br />
-      10999 Berlin - D <br /><br />
+      Invisible Hand GmbH <br />
+      Eisenbahnstraße 4<br />
+      10997 Berlin - D <br /><br />
 
       Geschäftsführer: Claudio Piero Banti <br />
       Handelsregisternummer: HRB 254195 <br />
